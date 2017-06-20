@@ -1,0 +1,6 @@
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo1\Exo1\bin\Debug\Exo1.exe.config
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo1\Exo1\bin\Debug\Exo1.exe
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo1\Exo1\bin\Debug\Exo1.pdb
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo1\Exo1\obj\Debug\Exo1.csprojResolveAssemblyReference.cache
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo1\Exo1\obj\Debug\Exo1.exe
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo1\Exo1\obj\Debug\Exo1.pdb

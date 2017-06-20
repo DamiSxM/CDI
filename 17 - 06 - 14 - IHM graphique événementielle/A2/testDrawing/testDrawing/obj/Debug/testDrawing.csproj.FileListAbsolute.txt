@@ -1,0 +1,9 @@
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\bin\Debug\testDrawing.exe.config
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\bin\Debug\testDrawing.exe
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\bin\Debug\testDrawing.pdb
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\obj\Debug\testDrawing.Properties.Resources.resources
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\obj\Debug\testDrawing.csproj.GenerateResource.Cache
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\obj\Debug\testDrawing.exe
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\obj\Debug\testDrawing.pdb
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\obj\Debug\testDrawing.Form1.resources
+D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\testDrawing\testDrawing\obj\Debug\testDrawing.csprojResolveAssemblyReference.cache

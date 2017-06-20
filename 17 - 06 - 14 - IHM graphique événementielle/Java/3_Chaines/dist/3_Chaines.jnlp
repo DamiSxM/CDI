@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="3_Chaines.jnlp">
+  <information>
+    <title>3_Chaines</title>
+    <vendor>CDI</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="3_Chaines.jar" size="4272" download="eager" />
+  </resources>
+  <application-desc main-class="pkg3_chaines.Main"  name="3_Chaines" >
+  </application-desc>
+  <update check="always"/>
+</jnlp>

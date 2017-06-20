@@ -1,0 +1,6 @@
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 5\Tipatouilleur\Tipatouilleur\bin\Debug\Tipatouilleur.exe.config
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 5\Tipatouilleur\Tipatouilleur\bin\Debug\Tipatouilleur.exe
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 5\Tipatouilleur\Tipatouilleur\bin\Debug\Tipatouilleur.pdb
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 5\Tipatouilleur\Tipatouilleur\obj\Debug\Tipatouilleur.csprojResolveAssemblyReference.cache
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 5\Tipatouilleur\Tipatouilleur\obj\Debug\Tipatouilleur.exe
+D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 5\Tipatouilleur\Tipatouilleur\obj\Debug\Tipatouilleur.pdb
