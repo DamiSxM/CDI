@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S04A04_Exceptions", "S04A04_Exceptions\S04A04_Exceptions.csproj", "{2AC8A929-18E9-4B32-BFA2-2E3C463474A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalariesDll", "SalariesDll\S03A002\SalariesDll\SalariesDll.csproj", "{1FFC360E-8BE7-4745-90DA-B39E342451AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2AC8A929-18E9-4B32-BFA2-2E3C463474A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC8A929-18E9-4B32-BFA2-2E3C463474A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC8A929-18E9-4B32-BFA2-2E3C463474A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FFC360E-8BE7-4745-90DA-B39E342451AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FFC360E-8BE7-4745-90DA-B39E342451AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FFC360E-8BE7-4745-90DA-B39E342451AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FFC360E-8BE7-4745-90DA-B39E342451AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

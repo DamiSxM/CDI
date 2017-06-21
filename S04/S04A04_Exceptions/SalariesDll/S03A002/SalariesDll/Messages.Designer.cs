@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace S04A04_Exceptions {
+namespace SalariesDll {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace S04A04_Exceptions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource1 {
+    internal class Messages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resource1() {
+        internal Messages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace S04A04_Exceptions {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("S04A04_Exceptions.Resource1", typeof(Resource1).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SalariesDll.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,11 +70,20 @@ namespace S04A04_Exceptions {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Des erreurs subsistent au niveau des propriétés du salarié avec le matricule {0].
+        ///   Recherche une chaîne localisée semblable à Des erreurs subsistent au niveau des propriétés du salarié avec le matricule {0}.
         /// </summary>
         internal static string Salarie_002 {
             get {
                 return ResourceManager.GetString("Salarie_002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ce matricule est invalide.
+        /// </summary>
+        internal static string Salarie_003 {
+            get {
+                return ResourceManager.GetString("Salarie_003", resourceCulture);
             }
         }
     }

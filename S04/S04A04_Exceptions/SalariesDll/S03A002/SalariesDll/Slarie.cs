@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using System.Globalization;
 
 namespace SalariesDll
 {
@@ -177,6 +178,7 @@ namespace SalariesDll
                 {
                     _matricule = value;
                 }
+                else throw new SalarieExeption(Messages.Salarie_003, string.Format(CultureInfo.CurrentCulture, Messages.Salarie_003, value));
             }
         }
         public string Nom
@@ -184,15 +186,16 @@ namespace SalariesDll
             get { return _nom; }
             set
             {
+                bool block = true;
                 if (value.Length >= 3 && value.Length <= 30)
                 {
-                    bool block = true;
                     foreach (char c in value)
                     {
                         if (Char.IsDigit(c)) block = false;
                     }
-                    if (block) _nom = value;
                 }
+                if (block) _nom = value;
+                else throw new SalarieExeption(Messages.Salarie_002, string.Format(CultureInfo.CurrentCulture, Messages.Salarie_002, value));
             }
         }
         public string Prenom
@@ -260,6 +263,7 @@ namespace SalariesDll
         }
         #endregion
     }
+    [Serializable]
     public class SalarieExeption : ApplicationException, ISerializable
     {
         private string _idMessage = string.Empty;

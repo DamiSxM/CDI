@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Xml;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace SalariesDll
 {
@@ -16,22 +17,35 @@ namespace SalariesDll
     [XmlInclude(typeof(Commercial))]
     public class Salaries : List<Salarie>
     {
+        #region Attributs
         static string fileNameTxt = "Salaries.csv";
         static string fileNameBinary = "Salaries.dat";
         static string fileNameXml = "Salaries.xml";
         static string fileNameJson = "Salaries.js";
+        #endregion
+
+        public new void Add(Salarie s)
+        {
+            if(Find(s.Matricule) == null) base.Add(s);
+            else throw new SalarieExeption(Messages.Salarie_001, string.Format(CultureInfo.CurrentCulture, Messages.Salarie_001, s.Matricule));
+        }
+
         public Salarie Find(string m)
         {
-            foreach (Salarie s in this) if (s.Matricule == m) return s;
+            if (Count > 0)
+            {
+                foreach (Salarie s in this) if (s.Matricule == m) return s;
+            }
             return null;
         }
         public void supprimerSalarie(string m)
         {
-            this.Remove(this.Find(m));
+            Remove(Find(m));
+
         }
         public void supprimerSalarie(Salarie s)
         {
-            this.Remove(s);
+            Remove(s);
         }
 
         #region Persistance : Txt
