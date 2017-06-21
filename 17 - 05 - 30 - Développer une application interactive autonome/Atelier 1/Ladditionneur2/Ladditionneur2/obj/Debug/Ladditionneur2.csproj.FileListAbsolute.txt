@@ -1,5 +1,0 @@
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur2\Ladditionneur2\bin\Debug\Ladditionneur2.exe.config
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur2\Ladditionneur2\bin\Debug\Ladditionneur2.exe
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur2\Ladditionneur2\bin\Debug\Ladditionneur2.pdb
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur2\Ladditionneur2\obj\Debug\Ladditionneur2.exe
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur2\Ladditionneur2\obj\Debug\Ladditionneur2.pdb

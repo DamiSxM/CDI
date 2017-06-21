@@ -1,8 +1,0 @@
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\bin\Debug\S03A002.exe.config
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\bin\Debug\S03A002.exe
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\bin\Debug\S03A002.pdb
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\bin\Debug\SalariesDll.dll
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\bin\Debug\SalariesDll.pdb
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\obj\Debug\S03A002.csprojResolveAssemblyReference.cache
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\obj\Debug\S03A002.exe
-D:\CDI\Documents\Dami\17 - 06 - 06 - Développer Objet - concepts de base\Activité 2\S03A002\S03A002\obj\Debug\S03A002.pdb

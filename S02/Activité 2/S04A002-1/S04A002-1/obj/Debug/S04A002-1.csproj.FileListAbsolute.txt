@@ -1,6 +1,0 @@
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 2\S04A002-1\S04A002-1\bin\Debug\S04A002-1.exe.config
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 2\S04A002-1\S04A002-1\obj\Debug\S04A002-1.csprojResolveAssemblyReference.cache
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 2\S04A002-1\S04A002-1\bin\Debug\S04A002-1.exe
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 2\S04A002-1\S04A002-1\bin\Debug\S04A002-1.pdb
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 2\S04A002-1\S04A002-1\obj\Debug\S04A002-1.exe
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 2\S04A002-1\S04A002-1\obj\Debug\S04A002-1.pdb

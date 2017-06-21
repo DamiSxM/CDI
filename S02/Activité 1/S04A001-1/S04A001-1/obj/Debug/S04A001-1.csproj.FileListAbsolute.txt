@@ -1,8 +1,0 @@
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\bin\Debug\S04A001-1.exe.config
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\bin\Debug\S04A001-1.exe
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\bin\Debug\S04A001-1.pdb
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\bin\Debug\SalariesDll.dll
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\bin\Debug\SalariesDll.pdb
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\obj\Debug\S04A001-1.csprojResolveAssemblyReference.cache
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\obj\Debug\S04A001-1.exe
-D:\CDI\Documents\Dami\17 - 06 - 09 - Développer l’interface d’une application informatique\Activité 1\S04A001-1\S04A001-1\obj\Debug\S04A001-1.pdb

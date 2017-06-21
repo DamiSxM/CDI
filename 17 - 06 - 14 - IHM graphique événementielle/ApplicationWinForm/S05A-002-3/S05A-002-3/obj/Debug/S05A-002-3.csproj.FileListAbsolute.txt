@@ -1,9 +1,0 @@
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\bin\Debug\S05A-002-3.exe.config
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\bin\Debug\S05A-002-3.exe
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\bin\Debug\S05A-002-3.pdb
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\obj\Debug\S05A_002_3.Form1.resources
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\obj\Debug\S05A_002_3.Properties.Resources.resources
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\obj\Debug\S05A-002-3.csproj.GenerateResource.Cache
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\obj\Debug\S05A-002-3.exe
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\obj\Debug\S05A-002-3.pdb
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\ApplicationWinForm\S05A-002-3\S05A-002-3\obj\Debug\S05A-002-3.csprojResolveAssemblyReference.cache

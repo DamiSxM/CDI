@@ -1,6 +1,0 @@
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo5\Exo5\bin\Debug\Exo5.exe.config
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo5\Exo5\bin\Debug\Exo5.exe
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo5\Exo5\bin\Debug\Exo5.pdb
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo5\Exo5\obj\Debug\Exo5.csprojResolveAssemblyReference.cache
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo5\Exo5\obj\Debug\Exo5.exe
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Atelier 3\Exo5\Exo5\obj\Debug\Exo5.pdb

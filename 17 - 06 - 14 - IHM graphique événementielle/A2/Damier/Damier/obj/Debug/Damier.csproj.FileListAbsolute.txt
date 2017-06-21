@@ -1,9 +1,0 @@
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\bin\Debug\Damier.exe.config
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\bin\Debug\Damier.exe
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\bin\Debug\Damier.pdb
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\obj\Debug\Damier.Form1.resources
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\obj\Debug\Damier.Properties.Resources.resources
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\obj\Debug\Damier.csproj.GenerateResource.Cache
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\obj\Debug\Damier.exe
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\obj\Debug\Damier.pdb
-D:\CDI\Documents\Dami\17 - 06 - 14 - IHM graphique événementielle\A2\Damier\Damier\obj\Debug\Damier.csprojResolveAssemblyReference.cache

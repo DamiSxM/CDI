@@ -1,6 +1,0 @@
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur3\Ladditionneur3\bin\Debug\Ladditionneur3.exe.config
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur3\Ladditionneur3\obj\Debug\Ladditionneur3.csprojResolveAssemblyReference.cache
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur3\Ladditionneur3\bin\Debug\Ladditionneur3.exe
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur3\Ladditionneur3\bin\Debug\Ladditionneur3.pdb
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur3\Ladditionneur3\obj\Debug\Ladditionneur3.exe
-D:\CDI\Documents\Dami\17 - 05 - 30 - Développer une application interactive autonome\Ladditionneur3\Ladditionneur3\obj\Debug\Ladditionneur3.pdb
