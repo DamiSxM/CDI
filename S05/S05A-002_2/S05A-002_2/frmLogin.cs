@@ -21,19 +21,6 @@ namespace S05A_002_2
             this.CancelButton = btnQuitter;
         }
 
-        /*private void Global_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            switch (e.KeyChar)
-            {
-                case (char)27:
-                    btnQuitter_Click(null, null);
-                    break;
-                case '\r':
-                    btnConnection_Click(null, null);
-                    break;
-            }
-        }*/
-
         private void txtlogin_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = !test_Login();
@@ -94,14 +81,12 @@ namespace S05A_002_2
 
         private void btnConnection_Click(object sender, EventArgs e)
         {
-            if (test_Login() & test_Pass())
-            {
-                this.DialogResult = DialogResult.OK;
-            }
+            if (test_Login() & test_Pass()) DialogResult = DialogResult.OK;
+            else DialogResult = DialogResult.None;
         }
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
