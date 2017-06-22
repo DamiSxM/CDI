@@ -158,7 +158,8 @@ namespace GestionSalaraies
         {
             roles = new Roles();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
-            roles.Load(serialiseur,Properties.Settings.Default.AppData);
+            //roles.Load(serialiseur, Properties.Settings.Default.AppData);
+            roles.Load(serialiseur, Properties.Settings.Default.AppData2);
 
             foreach (Role item in roles)
             {
@@ -170,7 +171,8 @@ namespace GestionSalaraies
         {
             utilisateurs = new Utilisateurs();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
-            utilisateurs.Load(serialiseur,Properties.Settings.Default.AppData);
+            //utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData);
+            utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData2);
             foreach (Utilisateur item in utilisateurs)
             {
                 cbUtilisateurs.Items.Add(item.Identifiant);

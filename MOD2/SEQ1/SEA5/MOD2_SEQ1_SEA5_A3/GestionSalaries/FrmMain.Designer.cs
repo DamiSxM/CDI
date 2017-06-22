@@ -37,8 +37,6 @@
             // 
             // ms_Menu
             // 
-            this.ms_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
             this.ms_Menu.Location = new System.Drawing.Point(0, 0);
             this.ms_Menu.Name = "ms_Menu";
             this.ms_Menu.Size = new System.Drawing.Size(586, 24);
@@ -47,9 +45,6 @@
             // 
             // menuToolStripMenuItem
             // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_gestUtilisateurs,
-            this.menu_gestSalaries});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
@@ -66,6 +61,7 @@
             this.menu_gestSalaries.Name = "menu_gestSalaries";
             this.menu_gestSalaries.Size = new System.Drawing.Size(195, 22);
             this.menu_gestSalaries.Text = "Gestion des salariés";
+            this.menu_gestSalaries.Click += new System.EventHandler(this.menu_gestSalaries_Click);
             // 
             // FrmMain
             // 

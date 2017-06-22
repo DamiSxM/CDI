@@ -21,7 +21,8 @@ namespace GestionSalaraies
         public DialConnexion()
         {
             InitializeComponent();
-            _Users.Load(_Sauvegardeur, Settings.Default.AppData);
+            //_Users.Load(_Sauvegardeur, Properties.Settings.Default.AppData);
+            _Users.Load(_Sauvegardeur, Properties.Settings.Default.AppData2);
 
             AcceptButton = btnConnexion;
             CancelButton = btnQuitter;
@@ -93,9 +94,30 @@ namespace GestionSalaraies
         {
 
             _User = _Users.UtilisateurByMatricule(txtIdentifiant.Text);
-            if(_User != null && _User.MotDePasse == txtMDP.Text)
+            if (_User != null)
             {
-                this.DialogResult = DialogResult.OK;
+                switch (_User.Connecter(txtMDP.Text))
+                {
+                    case ConnectionResult.Connecté:
+                        MessageBox.Show("Bienvenue " + _User.Nom);
+                        DialogResult = DialogResult.OK;
+                        break;
+                    case ConnectionResult.MotPasseInvalide:
+                        DialogResult = DialogResult.None;
+                        epUtilisateur.SetError(btnConnexion, "Connexion non valide");
+                        break;
+                    case ConnectionResult.CompteBloqué:
+                        MessageBox.Show("le compte a été bloqué");
+                        DialogResult = DialogResult.Cancel;
+                        break;
+                    default:
+                        DialogResult = DialogResult.None;
+                        break;
+                }
+            } else
+            {
+                epUtilisateur.SetError(btnConnexion, "Connexion non valide");
+                DialogResult = DialogResult.None;
             }
 
         }
