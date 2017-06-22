@@ -15,20 +15,17 @@ namespace GestionSalaraies
 {
     public partial class DialConnexion : Form
     {
-        SauvegardeXML _Sauvegardeur = new SauvegardeXML();
         Utilisateurs _Users = new Utilisateurs();
-        Utilisateur _User = new Utilisateur();
         public DialConnexion()
         {
             InitializeComponent();
-            //_Users.Load(_Sauvegardeur, Properties.Settings.Default.AppData);
-            _Users.Load(_Sauvegardeur, Properties.Settings.Default.AppData2);
+            _Users.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
+            //_Users.Load(_Sauvegardeur, Properties.Settings.Default.AppData2);
 
             AcceptButton = btnConnexion;
             CancelButton = btnQuitter;
-
-            //_Users.
         }
+
         #region Gestionnaires Evenements Validation
 
         /// <summary>
@@ -39,7 +36,6 @@ namespace GestionSalaraies
         private void txtIdentifiant_Validating(object sender, CancelEventArgs e)
         {
             if(Utilisateur.IsIdentifiantValide(txtIdentifiant.Text))
-            //if (IsIdCorrect(txtIdentifiant.Text))
             {
                 epUtilisateur.SetError(txtIdentifiant, String.Empty);
             }
@@ -61,7 +57,6 @@ namespace GestionSalaraies
             if (keyData == Keys.Escape) this.DialogResult = DialogResult.Cancel;
             return base.ProcessDialogKey(keyData);
         }
-
         /// <summary>
         /// Vérification du mot de passe
         /// </summary>
@@ -70,10 +65,7 @@ namespace GestionSalaraies
         private void txtMDP_Validating(object sender, CancelEventArgs e)
         {
             if(Utilisateur.IsMotPasseValide(txtMDP.Text))
-            //if (IsMotPasseCorrect(txtMDP.Text, txtIdentifiant.Text))
-            {
                 epUtilisateur.SetError(txtMDP, String.Empty);
-            }
             else
             {
                 epUtilisateur.SetError(txtMDP, "Mot de passe incorrect");
@@ -93,20 +85,24 @@ namespace GestionSalaraies
         private void btnConnexion_Click(object sender, EventArgs e)
         {
 
-            _User = _Users.UtilisateurByMatricule(txtIdentifiant.Text);
-            if (_User != null)
+            MonApplication.UtilisateurConnecte = _Users.UtilisateurByMatricule(txtIdentifiant.Text);
+            if (MonApplication.UtilisateurConnecte != null)
             {
-                switch (_User.Connecter(txtMDP.Text))
+                switch (MonApplication.UtilisateurConnecte.Connecter(txtMDP.Text))
                 {
                     case ConnectionResult.Connecté:
-                        MessageBox.Show("Bienvenue " + _User.Nom);
+                        MonApplication.UtilisateurConnecte.NombreEchecsConsecutifs = 0;
+                        _Users.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
                         DialogResult = DialogResult.OK;
                         break;
                     case ConnectionResult.MotPasseInvalide:
-                        DialogResult = DialogResult.None;
                         epUtilisateur.SetError(btnConnexion, "Connexion non valide");
+                        DialogResult = DialogResult.None;
                         break;
                     case ConnectionResult.CompteBloqué:
+                        MonApplication.UtilisateurConnecte.NombreEchecsConsecutifs = 0;
+                        MonApplication.UtilisateurConnecte.CompteBloque = true;
+                        _Users.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
                         MessageBox.Show("le compte a été bloqué");
                         DialogResult = DialogResult.Cancel;
                         break;
@@ -114,7 +110,8 @@ namespace GestionSalaraies
                         DialogResult = DialogResult.None;
                         break;
                 }
-            } else
+            }
+            else
             {
                 epUtilisateur.SetError(btnConnexion, "Connexion non valide");
                 DialogResult = DialogResult.None;

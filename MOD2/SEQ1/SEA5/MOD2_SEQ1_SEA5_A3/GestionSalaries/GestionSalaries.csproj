@@ -71,12 +71,6 @@
     <Compile Include="DialConnexion.Designer.cs">
       <DependentUpon>DialConnexion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSalaries_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmSalaries_old.Designer.cs">
-      <DependentUpon>FrmSalaries_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmSalaries.cs">
       <SubType>Form</SubType>
     </Compile>

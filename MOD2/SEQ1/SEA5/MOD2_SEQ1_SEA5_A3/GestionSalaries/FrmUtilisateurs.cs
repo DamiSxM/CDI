@@ -36,11 +36,9 @@ namespace GestionSalaraies
         public FrmUtilisateurs()
         {
             InitializeComponent();
-           
         }
 
         void GestionnaireContextes(Contextes contexte)
-            
         {
             
             switch (contexte)
@@ -49,10 +47,16 @@ namespace GestionSalaraies
                     cbUtilisateurs.Enabled = (cbUtilisateurs.Items.Count>0);
                     btnNouveau.Enabled = true;
                     gbDetailUtilisateur.Visible = false;
+
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
+                    btnAnnuler.Click += new EventHandler(btnAnnulerModification_Click);
+                    btnValider.Click -= new EventHandler(btnValiderAjout_Click);
+                    btnValider.Click += new EventHandler(btnValiderModification_Click);
                     break;
                 case Contextes.Consultation:
                     btnNouveau.Enabled = true;
                     gbDetailUtilisateur.Visible = true;
+                    cbUtilisateurs.Enabled = true;
                     pnlBoutons.Enabled = true;
                     btnModifier.Enabled = true;
                     btnAnnuler.Enabled = false;
@@ -76,20 +80,82 @@ namespace GestionSalaraies
                     chkCompteBloque.Enabled = true;
                     txtNom.ReadOnly = false;
                     cbRoles.Enabled = true;
+
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
+                    btnAnnuler.Click += new EventHandler(btnAnnulerModification_Click);
+                    btnValider.Click -= new EventHandler(btnValiderAjout_Click);
+                    btnValider.Click += new EventHandler(btnValiderModification_Click);
                     break;
                 case Contextes.ModificationAnnuler:
+                    ChargerValeursUtilisateur();
                     GestionnaireContextes(Contextes.Consultation);
                     break;
                 case Contextes.ModificationValider:
+                    ChargerValeursUtilisateur();
+                    GestionnaireContextes(Contextes.Consultation);
                     break;
                 case Contextes.AjoutInitial:
+                    btnValider.Click -= new EventHandler(btnValiderModification_Click);
+                    btnValider.Click += new EventHandler(btnValiderAjout_Click);
+
+                    btnAnnuler.Click += new EventHandler(btnAnnulerAjout_Click);
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerModification_Click);
+
+                    btnNouveau.Enabled = false;
+                    gbDetailUtilisateur.Visible = true;
+                    cbUtilisateurs.Enabled = false;
+                    pnlBoutons.Enabled = true;
+                    btnModifier.Enabled = false;
+                    btnAnnuler.Enabled = true;
+                    btnValider.Enabled = true;
+                    txtIdentifiant.Text = "";
+                    txtIdentifiant.ReadOnly = false;
+                    txtMotDePasse.Text = "";
+                    txtMotDePasse.ReadOnly = false;
+                    chkCompteBloque.Checked = false;
+                    chkCompteBloque.Enabled = true;
+                    txtNom.Text = "";
+                    txtNom.ReadOnly = false;
+                    cbRoles.Enabled = true;
                     break;
                 case Contextes.AjoutValider:
+                    cbUtilisateurs.Items.Clear();
+                    ChargerUtilisateurs();
+                    GestionnaireContextes(Contextes.Initial);
                     break;
                 default:
                     break;
             }
 
+        }
+
+        private void AjouterUtilisateur()
+        {
+            if (IsValidChamps())
+            {
+                try
+                {
+                    utilisateur = new Utilisateur();
+
+                    utilisateur.Identifiant = txtIdentifiant.Text;
+                    utilisateur.MotDePasse = txtMotDePasse.Text;
+                    utilisateur.Nom = txtNom.Text;
+                    utilisateur.CompteBloque = chkCompteBloque.Checked;
+                    utilisateur.Identifiant = txtIdentifiant.Text;
+                    utilisateur.MotDePasse = txtMotDePasse.Text;
+                    utilisateur.Role = roles.RechercherRole(cbRoles.SelectedItem.ToString());
+
+                    utilisateurs.Add(utilisateur);
+
+                    ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
+                    utilisateurs.Save(serialiseur, Properties.Settings.Default.AppData);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    // a programmer
+                }
+            }
         }
 
         private void ChargerValeursUtilisateur()
@@ -114,18 +180,26 @@ namespace GestionSalaraies
             {
                 try
                 {
-                    utilisateur.Identifiant = txtIdentifiant.Text;
-                    utilisateur.MotDePasse = txtMotDePasse.Text;
-                    txtNom.Text = utilisateur.Nom;
-                    chkCompteBloque.Checked = utilisateur.CompteBloque;
-                    utilisateur.Identifiant = txtIdentifiant.Text;
-                    utilisateur.MotDePasse = txtMotDePasse.Text;
-                    txtNom.Text = utilisateur.Nom;
-                    chkCompteBloque.Checked = utilisateur.CompteBloque;
-                }
-                catch (Exception)
-                {
+                    utilisateurs.Remove(utilisateur);
 
+                    utilisateur = new Utilisateur();
+
+                    utilisateur.Identifiant = txtIdentifiant.Text;
+                    utilisateur.MotDePasse = txtMotDePasse.Text;
+                    utilisateur.Nom = txtNom.Text;
+                    utilisateur.CompteBloque = chkCompteBloque.Checked;
+                    utilisateur.Identifiant = txtIdentifiant.Text;
+                    utilisateur.MotDePasse = txtMotDePasse.Text;
+                    utilisateur.Role = roles.RechercherRole(cbRoles.SelectedItem.ToString());
+
+                    utilisateurs.Add(utilisateur);
+
+                    ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
+                    utilisateurs.Save(serialiseur, Properties.Settings.Default.AppData);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
                     // a programmer
                 }
 
@@ -153,13 +227,12 @@ namespace GestionSalaraies
             return valid;
         }
 
-
         private void ChargerRoles()
         {
             roles = new Roles();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
-            //roles.Load(serialiseur, Properties.Settings.Default.AppData);
-            roles.Load(serialiseur, Properties.Settings.Default.AppData2);
+            roles.Load(serialiseur, Properties.Settings.Default.AppData);
+            //roles.Load(serialiseur, Properties.Settings.Default.AppData2);
 
             foreach (Role item in roles)
             {
@@ -171,8 +244,8 @@ namespace GestionSalaraies
         {
             utilisateurs = new Utilisateurs();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
-            //utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData);
-            utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData2);
+            utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData);
+            //utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData2);
             foreach (Utilisateur item in utilisateurs)
             {
                 cbUtilisateurs.Items.Add(item.Identifiant);
@@ -198,9 +271,29 @@ namespace GestionSalaraies
             GestionnaireContextes(Contextes.ModificationInitiale);
         }
 
-        private void btnAnnuler_Click(object sender, EventArgs e)
+        private void btnAnnulerModification_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.ModificationAnnuler);
+        }
+        private void btnAnnulerAjout_Click(object sender, EventArgs e)
+        {
+            GestionnaireContextes(Contextes.Initial);
+        }
+
+        private void btnValiderModification_Click(object sender, EventArgs e)
+        {
+            ModifierUtilisateur();
+            GestionnaireContextes(Contextes.ModificationValider);
+        }
+        private void btnValiderAjout_Click(object sender, EventArgs e)
+        {
+            AjouterUtilisateur();
+            GestionnaireContextes(Contextes.AjoutValider);
+        }
+
+        private void btnNouveau_Click(object sender, EventArgs e)
+        {
+            GestionnaireContextes(Contextes.AjoutInitial); ;
         }
     }
 }

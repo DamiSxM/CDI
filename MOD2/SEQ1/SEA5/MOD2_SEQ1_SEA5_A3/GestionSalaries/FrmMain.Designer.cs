@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.ms_Menu = new System.Windows.Forms.MenuStrip();
+            this.gestionDesUtilisateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDesSalariésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_gestUtilisateurs = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_gestSalaries = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,11 +39,28 @@
             // 
             // ms_Menu
             // 
+            this.ms_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionDesUtilisateursToolStripMenuItem,
+            this.gestionDesSalariésToolStripMenuItem});
             this.ms_Menu.Location = new System.Drawing.Point(0, 0);
             this.ms_Menu.Name = "ms_Menu";
             this.ms_Menu.Size = new System.Drawing.Size(586, 24);
             this.ms_Menu.TabIndex = 1;
             this.ms_Menu.Text = "menuStrip1";
+            // 
+            // gestionDesUtilisateursToolStripMenuItem
+            // 
+            this.gestionDesUtilisateursToolStripMenuItem.Name = "gestionDesUtilisateursToolStripMenuItem";
+            this.gestionDesUtilisateursToolStripMenuItem.Size = new System.Drawing.Size(141, 20);
+            this.gestionDesUtilisateursToolStripMenuItem.Text = "Gestion des Utilisateurs";
+            this.gestionDesUtilisateursToolStripMenuItem.Click += new System.EventHandler(this.menu_gestUtilisateurs_Click);
+            // 
+            // gestionDesSalariésToolStripMenuItem
+            // 
+            this.gestionDesSalariésToolStripMenuItem.Name = "gestionDesSalariésToolStripMenuItem";
+            this.gestionDesSalariésToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.gestionDesSalariésToolStripMenuItem.Text = "Gestion des Salariés";
+            this.gestionDesSalariésToolStripMenuItem.Click += new System.EventHandler(this.menu_gestSalaries_Click);
             // 
             // menuToolStripMenuItem
             // 
@@ -72,7 +91,8 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.ms_Menu;
             this.Name = "FrmMain";
-            this.Text = "ConteneurMDI";
+            this.Text = "Gestion";
+            this.Shown += new System.EventHandler(this.FrmMain_Shown);
             this.ms_Menu.ResumeLayout(false);
             this.ms_Menu.PerformLayout();
             this.ResumeLayout(false);
@@ -86,5 +106,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menu_gestUtilisateurs;
         private System.Windows.Forms.ToolStripMenuItem menu_gestSalaries;
+        private System.Windows.Forms.ToolStripMenuItem gestionDesUtilisateursToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDesSalariésToolStripMenuItem;
     }
 }

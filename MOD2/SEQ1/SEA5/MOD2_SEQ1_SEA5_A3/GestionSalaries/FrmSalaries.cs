@@ -8,20 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SalariesDll;
-using GestionSalaraies.Properties;
 using Utilitaires;
-
 
 namespace GestionSalaraies
 {
     public partial class FrmSalaries : Form
     {
-        Utilisateurs utilisateurs;
-        Roles roles;
-        Utilisateur utilisateur;
-      
-        
-
+        Salaries salaries;
+        Salarie salarie;
         enum Contextes
         {
             Initial = 0,
@@ -36,46 +30,41 @@ namespace GestionSalaraies
         public FrmSalaries()
         {
             InitializeComponent();
-           
         }
-
         void GestionnaireContextes(Contextes contexte)
-            
         {
-            
             switch (contexte)
             {
                 case Contextes.Initial:
-                    cbUtilisateurs.Enabled = (cbUtilisateurs.Items.Count>0);
-                    btnNouveau.Enabled = true;
-                    gbDetailUtilisateur.Visible = false;
                     break;
                 case Contextes.Consultation:
                     btnNouveau.Enabled = true;
-                    gbDetailUtilisateur.Visible = true;
+                    gbDetailSalarie.Visible = true;
                     pnlBoutons.Enabled = true;
                     btnModifier.Enabled = true;
                     btnAnnuler.Enabled = false;
                     btnValider.Enabled = false;
-                    txtIdentifiant.ReadOnly = true;
-                    txtMotDePasse.ReadOnly = true;
+                    txtMatricule.ReadOnly = true;
                     txtNom.ReadOnly = true;
-                    chkCompteBloque.Enabled = false;
-                    cbRoles.Enabled = false;
+                    txtPrenom.ReadOnly = true;
+                    txtBDay.ReadOnly = true;
+                    txtSalaireBrut.ReadOnly = true;
+                    txtTauxCS.ReadOnly = true;
                     break;
                 case Contextes.ModificationInitiale:
                     btnNouveau.Enabled = false;
-                    gbDetailUtilisateur.Visible = true;
-                    cbUtilisateurs.Enabled = false;
+                    gbDetailSalarie.Visible = true;
+                    cbSalaries.Enabled = false;
                     pnlBoutons.Enabled = true;
                     btnModifier.Enabled = false;
                     btnAnnuler.Enabled = true;
                     btnValider.Enabled = true;
-                    txtIdentifiant.ReadOnly = true;
-                    txtMotDePasse.ReadOnly = false;
-                    chkCompteBloque.Enabled = true;
+                    txtMatricule.ReadOnly = true;
                     txtNom.ReadOnly = false;
-                    cbRoles.Enabled = true;
+                    txtPrenom.ReadOnly = false;
+                    txtBDay.ReadOnly = false;
+                    txtSalaireBrut.ReadOnly = false;
+                    txtTauxCS.ReadOnly = false;
                     break;
                 case Contextes.ModificationAnnuler:
                     GestionnaireContextes(Contextes.Consultation);
@@ -89,110 +78,37 @@ namespace GestionSalaraies
                 default:
                     break;
             }
-
         }
-
-        private void ChargerValeursUtilisateur()
+        private void ChargerValeursSalaries()
         {
-            txtIdentifiant.Text = utilisateur.Identifiant;
-            txtMotDePasse.Text = utilisateur.MotDePasse;
-            txtNom.Text = utilisateur.Nom;
-            chkCompteBloque.Checked = utilisateur.CompteBloque;
-            foreach (var item in cbRoles.Items)
-            {
-                if (item.ToString() == utilisateur.Role.Identifiant)
-                {
-                    cbRoles.SelectedItem = item;
-                    break;
-                }
-            }
-        }
-        private void ModifierUtilisateur()
-        {
-
-            if (IsValidChamps())
-            {
-                try
-                {
-                    utilisateur.Identifiant = txtIdentifiant.Text;
-                    utilisateur.MotDePasse = txtMotDePasse.Text;
-                    txtNom.Text = utilisateur.Nom;
-                    chkCompteBloque.Checked = utilisateur.CompteBloque;
-                    utilisateur.Identifiant = txtIdentifiant.Text;
-                    utilisateur.MotDePasse = txtMotDePasse.Text;
-                    txtNom.Text = utilisateur.Nom;
-                    chkCompteBloque.Checked = utilisateur.CompteBloque;
-                }
-                catch (Exception)
-                {
-
-                    // a programmer
-                }
-
-
-            }
-        }
-
-        private bool IsValidChamps()
-        {
-            bool valid = true;
-
-            if (!Utilisateur.IsIdentifiantValide(txtIdentifiant.Text))
-            {
-                valid = false;
-                epUtilisateur.SetError(txtIdentifiant, "L'identifiant n'est pas valide");
-
-            }
-            else
-            {
-                epUtilisateur.SetError(txtIdentifiant, string.Empty);
-            }
-
-
-
-            return valid;
-        }
-
-
-        private void ChargerRoles()
-        {
-            roles = new Roles();
+            salaries = new Salaries();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
-            //roles.Load(serialiseur, Properties.Settings.Default.AppData);
-            roles.Load(serialiseur, Properties.Settings.Default.AppData2);
-
-            foreach (Role item in roles)
+            salaries.Load(serialiseur, Properties.Settings.Default.AppData);
+            foreach (Salarie s in salaries)
             {
-                cbRoles.Items.Add(item.Identifiant);
+                cbSalaries.Items.Add(s.Matricule);
             }
         }
-
-        private void ChargerUtilisateurs()
+        private void ChargerValeursSalarie()
         {
-            utilisateurs = new Utilisateurs();
-            ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
-            //utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData);
-            utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData2);
-            foreach (Utilisateur item in utilisateurs)
-            {
-                cbUtilisateurs.Items.Add(item.Identifiant);
-            }
+            txtMatricule.Text = salarie.Matricule;
+            txtNom.Text = salarie.Nom;
+            txtPrenom.Text = salarie.Prenom;
+            txtBDay.Text = salarie.DateNaissance.ToShortDateString();
+            txtSalaireBrut.Text = salarie.SalaireBrut.ToString();
+            txtTauxCS.Text = salarie.TauxCS.ToString();
         }
-
-        private void FrmUtilisateurs_Load(object sender, EventArgs e)
+        private void FrmSalaries_Load(object sender, EventArgs e)
         {
-            ChargerUtilisateurs();
-            ChargerRoles();
+            ChargerValeursSalaries();
             GestionnaireContextes(Contextes.Initial);
         }
-
-        private void cbUtilisateurs_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSalaries_SelectedIndexChanged(object sender, EventArgs e)
         {
-            utilisateur = utilisateurs.UtilisateurByMatricule(cbUtilisateurs.Items[cbUtilisateurs.SelectedIndex].ToString());
-            ChargerValeursUtilisateur();
+            salarie = salaries.ExtraireSalarie(cbSalaries.Items[cbSalaries.SelectedIndex].ToString());
+            ChargerValeursSalarie();
             GestionnaireContextes(Contextes.Consultation);
         }
-
         private void btnModifier_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.ModificationInitiale);
@@ -201,6 +117,17 @@ namespace GestionSalaraies
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.ModificationAnnuler);
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            switch (MessageBox.Show("Voulez-vous vraiment supprimer le salarié matricule : " + salarie.Matricule, "Attention !", MessageBoxButtons.OKCancel))
+            {
+                case DialogResult.OK:
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
         }
     }
 }
