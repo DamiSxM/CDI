@@ -75,8 +75,6 @@ namespace GestionSalaraies
         }
         #endregion
 
-
-
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -84,7 +82,6 @@ namespace GestionSalaraies
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-
             MonApplication.UtilisateurConnecte = _Users.UtilisateurByMatricule(txtIdentifiant.Text);
             if (MonApplication.UtilisateurConnecte != null)
             {

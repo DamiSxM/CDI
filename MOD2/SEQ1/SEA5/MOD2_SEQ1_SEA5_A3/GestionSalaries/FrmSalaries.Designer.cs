@@ -28,11 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.cbSalaries = new System.Windows.Forms.ComboBox();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.gbDetailSalarie = new System.Windows.Forms.GroupBox();
+            this.pnlCommercial = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.chkCommercial = new System.Windows.Forms.CheckBox();
             this.pnlBoutons = new System.Windows.Forms.Panel();
+            this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
@@ -40,7 +48,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSalaireBrut = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtBDay = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,9 +55,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtMatricule = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSupprimer = new System.Windows.Forms.Button();
+            this.epSalarie = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtBDay = new System.Windows.Forms.MaskedTextBox();
             this.gbDetailSalarie.SuspendLayout();
+            this.pnlCommercial.SuspendLayout();
             this.pnlBoutons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epSalarie)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,15 +92,18 @@
             this.btnNouveau.TabIndex = 3;
             this.btnNouveau.Text = "Nouveau";
             this.btnNouveau.UseVisualStyleBackColor = true;
+            this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
             // gbDetailSalarie
             // 
+            this.gbDetailSalarie.Controls.Add(this.txtBDay);
+            this.gbDetailSalarie.Controls.Add(this.pnlCommercial);
+            this.gbDetailSalarie.Controls.Add(this.chkCommercial);
             this.gbDetailSalarie.Controls.Add(this.pnlBoutons);
             this.gbDetailSalarie.Controls.Add(this.txtTauxCS);
             this.gbDetailSalarie.Controls.Add(this.label7);
             this.gbDetailSalarie.Controls.Add(this.txtSalaireBrut);
             this.gbDetailSalarie.Controls.Add(this.label6);
-            this.gbDetailSalarie.Controls.Add(this.txtBDay);
             this.gbDetailSalarie.Controls.Add(this.label5);
             this.gbDetailSalarie.Controls.Add(this.txtPrenom);
             this.gbDetailSalarie.Controls.Add(this.label4);
@@ -100,10 +113,70 @@
             this.gbDetailSalarie.Controls.Add(this.label2);
             this.gbDetailSalarie.Location = new System.Drawing.Point(90, 132);
             this.gbDetailSalarie.Name = "gbDetailSalarie";
-            this.gbDetailSalarie.Size = new System.Drawing.Size(330, 234);
+            this.gbDetailSalarie.Size = new System.Drawing.Size(330, 327);
             this.gbDetailSalarie.TabIndex = 6;
             this.gbDetailSalarie.TabStop = false;
             this.gbDetailSalarie.Text = "Détails Salarié";
+            // 
+            // pnlCommercial
+            // 
+            this.pnlCommercial.Controls.Add(this.textBox2);
+            this.pnlCommercial.Controls.Add(this.label9);
+            this.pnlCommercial.Controls.Add(this.textBox1);
+            this.pnlCommercial.Controls.Add(this.label8);
+            this.pnlCommercial.Enabled = false;
+            this.pnlCommercial.Location = new System.Drawing.Point(10, 190);
+            this.pnlCommercial.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlCommercial.Name = "pnlCommercial";
+            this.pnlCommercial.Size = new System.Drawing.Size(315, 64);
+            this.pnlCommercial.TabIndex = 16;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(95, 35);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(132, 20);
+            this.textBox2.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 39);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Commission :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(107, 11);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(120, 20);
+            this.textBox1.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 15);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Chiffre d\'affaire :";
+            // 
+            // chkCommercial
+            // 
+            this.chkCommercial.AutoSize = true;
+            this.chkCommercial.Location = new System.Drawing.Point(105, 169);
+            this.chkCommercial.Margin = new System.Windows.Forms.Padding(2);
+            this.chkCommercial.Name = "chkCommercial";
+            this.chkCommercial.Size = new System.Drawing.Size(80, 17);
+            this.chkCommercial.TabIndex = 15;
+            this.chkCommercial.Text = "Commercial";
+            this.chkCommercial.UseVisualStyleBackColor = true;
             // 
             // pnlBoutons
             // 
@@ -111,11 +184,22 @@
             this.pnlBoutons.Controls.Add(this.btnValider);
             this.pnlBoutons.Controls.Add(this.btnAnnuler);
             this.pnlBoutons.Controls.Add(this.btnModifier);
-            this.pnlBoutons.Location = new System.Drawing.Point(5, 169);
+            this.pnlBoutons.Location = new System.Drawing.Point(10, 258);
             this.pnlBoutons.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBoutons.Name = "pnlBoutons";
             this.pnlBoutons.Size = new System.Drawing.Size(315, 60);
             this.pnlBoutons.TabIndex = 14;
+            // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.Location = new System.Drawing.Point(250, 17);
+            this.btnSupprimer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(63, 23);
+            this.btnSupprimer.TabIndex = 1;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // btnValider
             // 
@@ -136,7 +220,6 @@
             this.btnAnnuler.TabIndex = 0;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnModifier
             // 
@@ -184,14 +267,6 @@
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Salaire Brut :";
-            // 
-            // txtBDay
-            // 
-            this.txtBDay.Location = new System.Drawing.Point(139, 97);
-            this.txtBDay.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBDay.Name = "txtBDay";
-            this.txtBDay.Size = new System.Drawing.Size(98, 20);
-            this.txtBDay.TabIndex = 9;
             // 
             // label5
             // 
@@ -257,16 +332,18 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Matricule :";
             // 
-            // btnSupprimer
+            // epSalarie
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(250, 17);
-            this.btnSupprimer.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.Size = new System.Drawing.Size(63, 23);
-            this.btnSupprimer.TabIndex = 1;
-            this.btnSupprimer.Text = "Supprimer";
-            this.btnSupprimer.UseVisualStyleBackColor = true;
-            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
+            this.epSalarie.ContainerControl = this;
+            // 
+            // txtBDay
+            // 
+            this.txtBDay.Location = new System.Drawing.Point(137, 97);
+            this.txtBDay.Mask = "00/00/0000";
+            this.txtBDay.Name = "txtBDay";
+            this.txtBDay.Size = new System.Drawing.Size(100, 20);
+            this.txtBDay.TabIndex = 7;
+            this.txtBDay.ValidatingType = typeof(System.DateTime);
             // 
             // FrmSalaries
             // 
@@ -277,12 +354,18 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbSalaries);
             this.Controls.Add(this.btnNouveau);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSalaries";
             this.Text = "Gestion des Salariés";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmSalaries_Load);
             this.gbDetailSalarie.ResumeLayout(false);
             this.gbDetailSalarie.PerformLayout();
+            this.pnlCommercial.ResumeLayout(false);
+            this.pnlCommercial.PerformLayout();
             this.pnlBoutons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.epSalarie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,12 +387,19 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSalaireBrut;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtBDay;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnlBoutons;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnSupprimer;
+        private System.Windows.Forms.Panel pnlCommercial;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkCommercial;
+        private System.Windows.Forms.ErrorProvider epSalarie;
+        private System.Windows.Forms.MaskedTextBox txtBDay;
     }
 }

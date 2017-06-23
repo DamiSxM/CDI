@@ -36,10 +36,20 @@ namespace GestionSalaraies
             switch (contexte)
             {
                 case Contextes.Initial:
+                    cbSalaries.Text = "";
+                    cbSalaries.Enabled = (cbSalaries.Items.Count > 0);
+                    btnNouveau.Enabled = true;
+                    gbDetailSalarie.Visible = false;
+
+                    btnAnnuler.Click += new EventHandler(btnAnnulerModification_Click);
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
+                    btnSupprimer.Enabled = false;
                     break;
                 case Contextes.Consultation:
+                    btnSupprimer.Enabled = true;
                     btnNouveau.Enabled = true;
                     gbDetailSalarie.Visible = true;
+                    cbSalaries.Enabled = true;
                     pnlBoutons.Enabled = true;
                     btnModifier.Enabled = true;
                     btnAnnuler.Enabled = false;
@@ -52,6 +62,11 @@ namespace GestionSalaraies
                     txtTauxCS.ReadOnly = true;
                     break;
                 case Contextes.ModificationInitiale:
+                    btnValider.Click += new EventHandler(btnValiderModification_Click);
+                    btnValider.Click -= new EventHandler(btnValiderAjout_Click);
+                    btnAnnuler.Click += new EventHandler(btnAnnulerModification_Click);
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
+                    btnSupprimer.Enabled = false;
                     btnNouveau.Enabled = false;
                     gbDetailSalarie.Visible = true;
                     cbSalaries.Enabled = false;
@@ -70,16 +85,46 @@ namespace GestionSalaraies
                     GestionnaireContextes(Contextes.Consultation);
                     break;
                 case Contextes.ModificationValider:
+                    ChargerValeursSalarie();
+                    GestionnaireContextes(Contextes.Consultation);
                     break;
                 case Contextes.AjoutInitial:
+                    btnValider.Click -= new EventHandler(btnValiderModification_Click);
+                    btnValider.Click += new EventHandler(btnValiderAjout_Click);
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerModification_Click);
+                    btnAnnuler.Click += new EventHandler(btnAnnulerAjout_Click);
+                    btnSupprimer.Enabled = false;
+                    btnNouveau.Enabled = false;
+                    gbDetailSalarie.Visible = true;
+                    cbSalaries.Enabled = false;
+                    pnlBoutons.Enabled = true;
+                    btnModifier.Enabled = false;
+                    btnAnnuler.Enabled = true;
+                    btnValider.Enabled = true;
+                    txtMatricule.ReadOnly = false;
+                    txtMatricule.Text = "";
+                    txtNom.ReadOnly = false;
+                    txtNom.Text = "";
+                    txtPrenom.ReadOnly = false;
+                    txtPrenom.Text = "";
+                    txtBDay.ReadOnly = false;
+                    txtBDay.Text = "JJ/MM/AAAA";
+                    txtSalaireBrut.ReadOnly = false;
+                    txtSalaireBrut.Text = "";
+                    txtTauxCS.ReadOnly = false;
+                    txtTauxCS.Text = "";
                     break;
                 case Contextes.AjoutValider:
+                    cbSalaries.Items.Clear();
+                    ChargerSalaries();
+                    GestionnaireContextes(Contextes.Initial);
                     break;
                 default:
                     break;
             }
         }
-        private void ChargerValeursSalaries()
+        
+        private void ChargerSalaries()
         {
             salaries = new Salaries();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
@@ -98,9 +143,86 @@ namespace GestionSalaraies
             txtSalaireBrut.Text = salarie.SalaireBrut.ToString();
             txtTauxCS.Text = salarie.TauxCS.ToString();
         }
+
+
+        private void ModifierSalarie()
+        {
+            if (IsValidChamps())
+            {
+                try
+                {
+                    salarie.Matricule = txtMatricule.Text;
+                    salarie.Nom = txtNom.Text;
+                    salarie.Prenom = txtPrenom.Text;
+                    salarie.DateNaissance = DateTime.Parse(txtBDay.Text);
+                    salarie.SalaireBrut = decimal.Parse(txtSalaireBrut.Text);
+                    salarie.TauxCS = decimal.Parse(txtTauxCS.Text);
+                    
+                    salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    // a programmer
+                }
+
+
+            }
+        }
+        private void AjoutSalarie()
+        {
+            if (IsValidChamps())
+            {
+                try
+                {
+                    salarie = new Salarie();
+                    salarie.Matricule = txtMatricule.Text;
+                    salarie.Nom = txtNom.Text;
+                    salarie.Prenom = txtPrenom.Text;
+                    salarie.DateNaissance = DateTime.Parse(txtBDay.Text);
+                    salarie.SalaireBrut = decimal.Parse(txtSalaireBrut.Text);
+                    salarie.TauxCS = decimal.Parse(txtTauxCS.Text);
+                    salaries.Add(salarie);
+                    
+                    salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    // a programmer
+                }
+
+
+            }
+        }
+
+        private void SupprimerSalarie()
+        {
+            salaries.Remove(salarie);
+            salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
+        }
+
+        private bool IsValidChamps()
+        {
+            bool valid = true;
+
+            if (!Salarie.IsMatriculeValide(txtMatricule.Text))
+            {
+                valid = false;
+                epSalarie.SetError(txtMatricule, "Le matricule n'est pas valide");
+
+            }
+            else epSalarie.SetError(txtMatricule, string.Empty);
+
+            // A terminer
+
+            return valid;
+        }
+
+
         private void FrmSalaries_Load(object sender, EventArgs e)
         {
-            ChargerValeursSalaries();
+            ChargerSalaries();
             GestionnaireContextes(Contextes.Initial);
         }
         private void cbSalaries_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,9 +236,13 @@ namespace GestionSalaraies
             GestionnaireContextes(Contextes.ModificationInitiale);
         }
 
-        private void btnAnnuler_Click(object sender, EventArgs e)
+        private void btnAnnulerModification_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.ModificationAnnuler);
+        }
+        private void btnAnnulerAjout_Click(object sender, EventArgs e)
+        {
+            GestionnaireContextes(Contextes.Initial);
         }
 
         private void btnSupprimer_Click(object sender, EventArgs e)
@@ -124,10 +250,28 @@ namespace GestionSalaraies
             switch (MessageBox.Show("Voulez-vous vraiment supprimer le salarié matricule : " + salarie.Matricule, "Attention !", MessageBoxButtons.OKCancel))
             {
                 case DialogResult.OK:
+                    SupprimerSalarie();
+                    GestionnaireContextes(Contextes.AjoutValider);
                     break;
                 case DialogResult.Cancel:
                     break;
             }
+        }
+
+        private void btnValiderModification_Click(object sender, EventArgs e)
+        {
+            ModifierSalarie();
+            GestionnaireContextes(Contextes.ModificationValider);
+        }
+        private void btnValiderAjout_Click(object sender, EventArgs e)
+        {
+            AjoutSalarie();
+            GestionnaireContextes(Contextes.AjoutValider);
+        }
+
+        private void btnNouveau_Click(object sender, EventArgs e)
+        {
+            GestionnaireContextes(Contextes.AjoutInitial);
         }
     }
 }

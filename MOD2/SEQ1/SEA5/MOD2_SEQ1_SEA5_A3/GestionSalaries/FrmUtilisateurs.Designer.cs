@@ -247,8 +247,11 @@
             this.Controls.Add(this.cbUtilisateurs);
             this.Controls.Add(this.btnNouveau);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmUtilisateurs";
             this.Text = "Gestion des Utilisateurs";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmUtilisateurs_Load);
             this.gbDetailUtilisateur.ResumeLayout(false);
             this.gbDetailUtilisateur.PerformLayout();

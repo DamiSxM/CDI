@@ -136,7 +136,6 @@ namespace GestionSalaraies
                 try
                 {
                     utilisateur = new Utilisateur();
-
                     utilisateur.Identifiant = txtIdentifiant.Text;
                     utilisateur.MotDePasse = txtMotDePasse.Text;
                     utilisateur.Nom = txtNom.Text;
@@ -144,7 +143,6 @@ namespace GestionSalaraies
                     utilisateur.Identifiant = txtIdentifiant.Text;
                     utilisateur.MotDePasse = txtMotDePasse.Text;
                     utilisateur.Role = roles.RechercherRole(cbRoles.SelectedItem.ToString());
-
                     utilisateurs.Add(utilisateur);
 
                     ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
@@ -183,7 +181,6 @@ namespace GestionSalaraies
                     utilisateurs.Remove(utilisateur);
 
                     utilisateur = new Utilisateur();
-
                     utilisateur.Identifiant = txtIdentifiant.Text;
                     utilisateur.MotDePasse = txtMotDePasse.Text;
                     utilisateur.Nom = txtNom.Text;
