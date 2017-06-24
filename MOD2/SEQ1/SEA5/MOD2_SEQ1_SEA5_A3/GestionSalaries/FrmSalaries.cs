@@ -123,7 +123,7 @@ namespace GestionSalaraies
                     break;
             }
         }
-        
+
         private void ChargerSalaries()
         {
             salaries = new Salaries();
@@ -157,7 +157,7 @@ namespace GestionSalaraies
                     salarie.DateNaissance = DateTime.Parse(txtBDay.Text);
                     salarie.SalaireBrut = decimal.Parse(txtSalaireBrut.Text);
                     salarie.TauxCS = decimal.Parse(txtTauxCS.Text);
-                    
+
                     salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
                 }
                 catch (Exception e)
@@ -183,7 +183,7 @@ namespace GestionSalaraies
                     salarie.SalaireBrut = decimal.Parse(txtSalaireBrut.Text);
                     salarie.TauxCS = decimal.Parse(txtTauxCS.Text);
                     salaries.Add(salarie);
-                    
+
                     salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
                 }
                 catch (Exception e)
@@ -219,32 +219,34 @@ namespace GestionSalaraies
             return valid;
         }
 
-
+        #region Form : Events
         private void FrmSalaries_Load(object sender, EventArgs e)
         {
             ChargerSalaries();
             GestionnaireContextes(Contextes.Initial);
         }
+        private void FrmSalaries_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
+        #endregion
+
         private void cbSalaries_SelectedIndexChanged(object sender, EventArgs e)
         {
             salarie = salaries.ExtraireSalarie(cbSalaries.Items[cbSalaries.SelectedIndex].ToString());
             ChargerValeursSalarie();
             GestionnaireContextes(Contextes.Consultation);
         }
+
+        #region Boutons
+        private void btnNouveau_Click(object sender, EventArgs e)
+        {
+            GestionnaireContextes(Contextes.AjoutInitial);
+        }
         private void btnModifier_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.ModificationInitiale);
         }
-
-        private void btnAnnulerModification_Click(object sender, EventArgs e)
-        {
-            GestionnaireContextes(Contextes.ModificationAnnuler);
-        }
-        private void btnAnnulerAjout_Click(object sender, EventArgs e)
-        {
-            GestionnaireContextes(Contextes.Initial);
-        }
-
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             switch (MessageBox.Show("Voulez-vous vraiment supprimer le salarié matricule : " + salarie.Matricule, "Attention !", MessageBoxButtons.OKCancel))
@@ -258,6 +260,18 @@ namespace GestionSalaraies
             }
         }
 
+        #region Bouton : Annuler
+        private void btnAnnulerModification_Click(object sender, EventArgs e)
+        {
+            GestionnaireContextes(Contextes.ModificationAnnuler);
+        }
+        private void btnAnnulerAjout_Click(object sender, EventArgs e)
+        {
+            GestionnaireContextes(Contextes.Initial);
+        }
+        #endregion
+
+        #region Bouton : Valider
         private void btnValiderModification_Click(object sender, EventArgs e)
         {
             ModifierSalarie();
@@ -268,10 +282,7 @@ namespace GestionSalaraies
             AjoutSalarie();
             GestionnaireContextes(Contextes.AjoutValider);
         }
-
-        private void btnNouveau_Click(object sender, EventArgs e)
-        {
-            GestionnaireContextes(Contextes.AjoutInitial);
-        }
+#endregion
+        #endregion
     }
 }

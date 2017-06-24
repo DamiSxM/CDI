@@ -19,8 +19,6 @@ namespace GestionSalaraies
         Utilisateurs utilisateurs;
         Roles roles;
         Utilisateur utilisateur;
-      
-        
 
         enum Contextes
         {
@@ -40,18 +38,19 @@ namespace GestionSalaraies
 
         void GestionnaireContextes(Contextes contexte)
         {
-            
+
             switch (contexte)
             {
                 case Contextes.Initial:
-                    cbUtilisateurs.Enabled = (cbUtilisateurs.Items.Count>0);
+                    cbUtilisateurs.Enabled = (cbUtilisateurs.Items.Count > 0);
                     btnNouveau.Enabled = true;
                     gbDetailUtilisateur.Visible = false;
 
-                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
-                    btnAnnuler.Click += new EventHandler(btnAnnulerModification_Click);
-                    btnValider.Click -= new EventHandler(btnValiderAjout_Click);
                     btnValider.Click += new EventHandler(btnValiderModification_Click);
+                    btnAnnuler.Click += new EventHandler(btnAnnulerModification_Click);
+
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
+                    btnValider.Click -= new EventHandler(btnValiderAjout_Click);
                     break;
                 case Contextes.Consultation:
                     btnNouveau.Enabled = true;
@@ -81,10 +80,11 @@ namespace GestionSalaraies
                     txtNom.ReadOnly = false;
                     cbRoles.Enabled = true;
 
-                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
                     btnAnnuler.Click += new EventHandler(btnAnnulerModification_Click);
-                    btnValider.Click -= new EventHandler(btnValiderAjout_Click);
                     btnValider.Click += new EventHandler(btnValiderModification_Click);
+
+                    btnAnnuler.Click -= new EventHandler(btnAnnulerAjout_Click);
+                    btnValider.Click -= new EventHandler(btnValiderAjout_Click);
                     break;
                 case Contextes.ModificationAnnuler:
                     ChargerValeursUtilisateur();
@@ -95,10 +95,10 @@ namespace GestionSalaraies
                     GestionnaireContextes(Contextes.Consultation);
                     break;
                 case Contextes.AjoutInitial:
-                    btnValider.Click -= new EventHandler(btnValiderModification_Click);
                     btnValider.Click += new EventHandler(btnValiderAjout_Click);
-
                     btnAnnuler.Click += new EventHandler(btnAnnulerAjout_Click);
+
+                    btnValider.Click -= new EventHandler(btnValiderModification_Click);
                     btnAnnuler.Click -= new EventHandler(btnAnnulerModification_Click);
 
                     btnNouveau.Enabled = false;
@@ -249,12 +249,18 @@ namespace GestionSalaraies
             }
         }
 
+        #region Events
         private void FrmUtilisateurs_Load(object sender, EventArgs e)
         {
             ChargerUtilisateurs();
             ChargerRoles();
             GestionnaireContextes(Contextes.Initial);
         }
+        private void FrmUtilisateurs_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
+        #endregion
 
         private void cbUtilisateurs_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -263,11 +269,20 @@ namespace GestionSalaraies
             GestionnaireContextes(Contextes.Consultation);
         }
 
+        #region Gestion Boutons
+        #region Bouton : Modifier
+        /// <summary>
+        /// Bouton Modifier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModifier_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.ModificationInitiale);
         }
+        #endregion
 
+        #region Bouton : Annuler
         private void btnAnnulerModification_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.ModificationAnnuler);
@@ -276,21 +291,38 @@ namespace GestionSalaraies
         {
             GestionnaireContextes(Contextes.Initial);
         }
+        #endregion
 
+        #region Bouton : Valider
+        /// <summary>
+        /// Bouton Valider (modifications)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValiderModification_Click(object sender, EventArgs e)
         {
             ModifierUtilisateur();
             GestionnaireContextes(Contextes.ModificationValider);
         }
+        /// <summary>
+        /// Bouton Valider (ajout)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValiderAjout_Click(object sender, EventArgs e)
         {
             AjouterUtilisateur();
             GestionnaireContextes(Contextes.AjoutValider);
         }
+        #endregion
 
+        #region Bouton : Nouveau
         private void btnNouveau_Click(object sender, EventArgs e)
         {
             GestionnaireContextes(Contextes.AjoutInitial); ;
         }
+        #endregion
+        #endregion
+
     }
 }

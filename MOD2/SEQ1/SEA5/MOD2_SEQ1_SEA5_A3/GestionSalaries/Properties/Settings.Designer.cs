@@ -25,7 +25,7 @@ namespace GestionSalaraies.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Data")]
+        [global::System.Configuration.DefaultSettingValueAttribute("F:\\Documents\\AFPA\\CDI\\MOD2\\SEQ1\\SEA5\\MOD2_SEQ1_SEA5_A3")]
         public string AppData {
             get {
                 return ((string)(this["AppData"]));
@@ -46,7 +46,7 @@ namespace GestionSalaraies.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("F:\\Documents\\AFPA\\CDI\\MOD2\\SEQ1\\SEA5\\MOD2_SEQ1_SEA5_A3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Data")]
         public string AppData2 {
             get {
                 return ((string)(this["AppData2"]));

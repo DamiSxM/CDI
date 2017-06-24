@@ -92,6 +92,7 @@
             this.MainMenuStrip = this.ms_Menu;
             this.Name = "FrmMain";
             this.Text = "Gestion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Shown += new System.EventHandler(this.FrmMain_Shown);
             this.ms_Menu.ResumeLayout(false);
             this.ms_Menu.PerformLayout();

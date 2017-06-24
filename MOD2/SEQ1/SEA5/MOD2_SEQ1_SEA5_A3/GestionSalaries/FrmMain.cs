@@ -15,6 +15,7 @@ namespace GestionSalaraies
         DialConnexion _dial = new DialConnexion();
         FrmUtilisateurs _frm_User = new FrmUtilisateurs();
         FrmSalaries _frm_Salarie = new FrmSalaries();
+
         public FrmMain()
         {
             InitializeComponent();
@@ -22,18 +23,20 @@ namespace GestionSalaraies
             _frm_Salarie.MdiParent = this;
         }
 
+        #region Bouttons : Events
         private void menu_gestUtilisateurs_Click(object sender, EventArgs e)
         {
             _frm_User.WindowState = FormWindowState.Maximized;
             _frm_User.Show();
         }
-
         private void menu_gestSalaries_Click(object sender, EventArgs e)
         {
             _frm_Salarie.WindowState = FormWindowState.Maximized;
             _frm_Salarie.Show();
         }
+        #endregion
 
+        #region Form : Events
         private void FrmMain_Shown(object sender, EventArgs e)
         {
             switch (_dial.ShowDialog(this))
@@ -46,5 +49,10 @@ namespace GestionSalaraies
                     break;
             }
         }
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
+        }
+        #endregion
     }
 }

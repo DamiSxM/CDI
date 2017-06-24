@@ -33,6 +33,7 @@
             this.cbSalaries = new System.Windows.Forms.ComboBox();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.gbDetailSalarie = new System.Windows.Forms.GroupBox();
+            this.txtBDay = new System.Windows.Forms.MaskedTextBox();
             this.pnlCommercial = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.txtMatricule = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.epSalarie = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtBDay = new System.Windows.Forms.MaskedTextBox();
             this.gbDetailSalarie.SuspendLayout();
             this.pnlCommercial.SuspendLayout();
             this.pnlBoutons.SuspendLayout();
@@ -117,6 +117,15 @@
             this.gbDetailSalarie.TabIndex = 6;
             this.gbDetailSalarie.TabStop = false;
             this.gbDetailSalarie.Text = "Détails Salarié";
+            // 
+            // txtBDay
+            // 
+            this.txtBDay.Location = new System.Drawing.Point(137, 97);
+            this.txtBDay.Mask = "00/00/0000";
+            this.txtBDay.Name = "txtBDay";
+            this.txtBDay.Size = new System.Drawing.Size(100, 20);
+            this.txtBDay.TabIndex = 7;
+            this.txtBDay.ValidatingType = typeof(System.DateTime);
             // 
             // pnlCommercial
             // 
@@ -336,15 +345,6 @@
             // 
             this.epSalarie.ContainerControl = this;
             // 
-            // txtBDay
-            // 
-            this.txtBDay.Location = new System.Drawing.Point(137, 97);
-            this.txtBDay.Mask = "00/00/0000";
-            this.txtBDay.Name = "txtBDay";
-            this.txtBDay.Size = new System.Drawing.Size(100, 20);
-            this.txtBDay.TabIndex = 7;
-            this.txtBDay.ValidatingType = typeof(System.DateTime);
-            // 
             // FrmSalaries
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +359,7 @@
             this.Name = "FrmSalaries";
             this.Text = "Gestion des Salariés";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSalaries_FormClosing);
             this.Load += new System.EventHandler(this.FrmSalaries_Load);
             this.gbDetailSalarie.ResumeLayout(false);
             this.gbDetailSalarie.PerformLayout();

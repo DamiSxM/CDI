@@ -10,6 +10,7 @@ namespace SalariesDll
     {
         Connecté=0,
         MotPasseInvalide = 2,
-        CompteBloqué = 3
+        CompteBloqué = 3,
+        PasAdmin = 4
     }
 }

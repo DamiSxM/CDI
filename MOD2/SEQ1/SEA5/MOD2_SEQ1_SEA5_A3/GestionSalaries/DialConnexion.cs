@@ -20,8 +20,6 @@ namespace GestionSalaraies
         {
             InitializeComponent();
             _Users.Load(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
-            //_Users.Load(_Sauvegardeur, Properties.Settings.Default.AppData2);
-
             AcceptButton = btnConnexion;
             CancelButton = btnQuitter;
         }
@@ -77,7 +75,7 @@ namespace GestionSalaraies
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnConnexion_Click(object sender, EventArgs e)
@@ -100,8 +98,12 @@ namespace GestionSalaraies
                         MonApplication.UtilisateurConnecte.NombreEchecsConsecutifs = 0;
                         MonApplication.UtilisateurConnecte.CompteBloque = true;
                         _Users.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
-                        MessageBox.Show("le compte a été bloqué");
-                        DialogResult = DialogResult.Cancel;
+                        MessageBox.Show("Le compte a été bloqué");
+                        DialogResult = DialogResult.None;
+                        break;
+                    case ConnectionResult.PasAdmin:
+                        MessageBox.Show("Le compte n'est pas un compte Administrateur");
+                        DialogResult = DialogResult.None;
                         break;
                     default:
                         DialogResult = DialogResult.None;

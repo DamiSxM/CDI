@@ -203,7 +203,8 @@ namespace SalariesDll
 
         public ConnectionResult Connecter(string motDePasse)
         {
-           
+            if (this.CompteBloque) return ConnectionResult.CompteBloqué;
+            if (this.Role.Identifiant != "Administrateur") return ConnectionResult.PasAdmin;
             if (this.MotDePasse == motDePasse)
             {
                 this.NombreEchecsConsecutifs = 0;

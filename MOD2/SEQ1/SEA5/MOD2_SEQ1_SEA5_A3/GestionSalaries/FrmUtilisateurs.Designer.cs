@@ -252,6 +252,7 @@
             this.Name = "FrmUtilisateurs";
             this.Text = "Gestion des Utilisateurs";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmUtilisateurs_FormClosing);
             this.Load += new System.EventHandler(this.FrmUtilisateurs_Load);
             this.gbDetailUtilisateur.ResumeLayout(false);
             this.gbDetailUtilisateur.PerformLayout();
