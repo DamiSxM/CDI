@@ -48,6 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.epUtilisateur = new System.Windows.Forms.ErrorProvider(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRecherche = new System.Windows.Forms.Button();
             this.gbDetailUtilisateur.SuspendLayout();
             this.pnlBoutons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epUtilisateur)).BeginInit();
@@ -237,11 +238,22 @@
             // 
             this.epUtilisateur.ContainerControl = this;
             // 
+            // btnRecherche
+            // 
+            this.btnRecherche.Location = new System.Drawing.Point(317, 74);
+            this.btnRecherche.Name = "btnRecherche";
+            this.btnRecherche.Size = new System.Drawing.Size(75, 23);
+            this.btnRecherche.TabIndex = 4;
+            this.btnRecherche.Text = "Rechercher";
+            this.btnRecherche.UseVisualStyleBackColor = true;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            // 
             // FrmUtilisateurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 457);
+            this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.gbDetailUtilisateur);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbUtilisateurs);
@@ -285,5 +297,6 @@
         private System.Windows.Forms.CheckBox chkCompteBloque;
         private System.Windows.Forms.ErrorProvider epUtilisateur;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button btnRecherche;
     }
 }

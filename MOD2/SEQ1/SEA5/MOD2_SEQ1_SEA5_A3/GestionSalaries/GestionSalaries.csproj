@@ -71,6 +71,12 @@
     <Compile Include="DialConnexion.Designer.cs">
       <DependentUpon>DialConnexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRechercheUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRechercheUtilisateur.Designer.cs">
+      <DependentUpon>FrmRechercheUtilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSalaries.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialConnexion.resx" />
+    <EmbeddedResource Include="FrmRechercheUtilisateur.resx">
+      <DependentUpon>FrmRechercheUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSalaries.resx">
       <DependentUpon>FrmSalaries.cs</DependentUpon>
     </EmbeddedResource>

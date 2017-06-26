@@ -35,9 +35,9 @@
             this.gbDetailSalarie = new System.Windows.Forms.GroupBox();
             this.txtBDay = new System.Windows.Forms.MaskedTextBox();
             this.pnlCommercial = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtComm = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCA = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.chkCommercial = new System.Windows.Forms.CheckBox();
             this.pnlBoutons = new System.Windows.Forms.Panel();
@@ -129,9 +129,9 @@
             // 
             // pnlCommercial
             // 
-            this.pnlCommercial.Controls.Add(this.textBox2);
+            this.pnlCommercial.Controls.Add(this.txtComm);
             this.pnlCommercial.Controls.Add(this.label9);
-            this.pnlCommercial.Controls.Add(this.textBox1);
+            this.pnlCommercial.Controls.Add(this.txtCA);
             this.pnlCommercial.Controls.Add(this.label8);
             this.pnlCommercial.Enabled = false;
             this.pnlCommercial.Location = new System.Drawing.Point(10, 190);
@@ -140,13 +140,13 @@
             this.pnlCommercial.Size = new System.Drawing.Size(315, 64);
             this.pnlCommercial.TabIndex = 16;
             // 
-            // textBox2
+            // txtComm
             // 
-            this.textBox2.Location = new System.Drawing.Point(95, 35);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 20);
-            this.textBox2.TabIndex = 17;
+            this.txtComm.Location = new System.Drawing.Point(95, 35);
+            this.txtComm.Margin = new System.Windows.Forms.Padding(2);
+            this.txtComm.Name = "txtComm";
+            this.txtComm.Size = new System.Drawing.Size(132, 20);
+            this.txtComm.TabIndex = 17;
             // 
             // label9
             // 
@@ -158,13 +158,13 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Commission :";
             // 
-            // textBox1
+            // txtCA
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 11);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 15;
+            this.txtCA.Location = new System.Drawing.Point(107, 11);
+            this.txtCA.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCA.Name = "txtCA";
+            this.txtCA.Size = new System.Drawing.Size(120, 20);
+            this.txtCA.TabIndex = 15;
             // 
             // label8
             // 
@@ -186,6 +186,7 @@
             this.chkCommercial.TabIndex = 15;
             this.chkCommercial.Text = "Commercial";
             this.chkCommercial.UseVisualStyleBackColor = true;
+            this.chkCommercial.CheckStateChanged += new System.EventHandler(this.chkCommercial_CheckStateChanged);
             // 
             // pnlBoutons
             // 
@@ -395,9 +396,9 @@
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Panel pnlCommercial;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtComm;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCA;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkCommercial;
         private System.Windows.Forms.ErrorProvider epSalarie;

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SalariesDll;
 using Utilitaires;
+using System.Globalization;
 
 namespace GestionSalaraies
 {
@@ -60,6 +61,8 @@ namespace GestionSalaraies
                     txtBDay.ReadOnly = true;
                     txtSalaireBrut.ReadOnly = true;
                     txtTauxCS.ReadOnly = true;
+                    chkCommercial.Enabled = false;
+                    pnlCommercial.Enabled = false;
                     break;
                 case Contextes.ModificationInitiale:
                     btnValider.Click += new EventHandler(btnValiderModification_Click);
@@ -80,6 +83,9 @@ namespace GestionSalaraies
                     txtBDay.ReadOnly = false;
                     txtSalaireBrut.ReadOnly = false;
                     txtTauxCS.ReadOnly = false;
+                    chkCommercial.Enabled = true;
+                    if (chkCommercial.Checked) pnlCommercial.Enabled = true;
+                    else pnlCommercial.Enabled = false;
                     break;
                 case Contextes.ModificationAnnuler:
                     GestionnaireContextes(Contextes.Consultation);
@@ -113,6 +119,9 @@ namespace GestionSalaraies
                     txtSalaireBrut.Text = "";
                     txtTauxCS.ReadOnly = false;
                     txtTauxCS.Text = "";
+                    chkCommercial.Enabled = true;
+                    txtCA.Text = "";
+                    txtComm.Text = "";
                     break;
                 case Contextes.AjoutValider:
                     cbSalaries.Items.Clear();
@@ -142,6 +151,20 @@ namespace GestionSalaraies
             txtBDay.Text = salarie.DateNaissance.ToShortDateString();
             txtSalaireBrut.Text = salarie.SalaireBrut.ToString();
             txtTauxCS.Text = salarie.TauxCS.ToString();
+            if(salarie.GetType() == typeof(Commercial))
+            {
+                chkCommercial.Checked = true;
+                txtCA.Text = ((Commercial)salarie).ChiffreAffaire.ToString();
+                txtComm.Text = ((Commercial)salarie).Commission.ToString();
+                pnlCommercial.Enabled = true;
+            }
+            else
+            {
+                chkCommercial.Checked = false;
+                txtCA.Text = "";
+                txtComm.Text = "";
+                pnlCommercial.Enabled = false;
+            }
         }
 
 
@@ -151,31 +174,15 @@ namespace GestionSalaraies
             {
                 try
                 {
-                    salarie.Matricule = txtMatricule.Text;
-                    salarie.Nom = txtNom.Text;
-                    salarie.Prenom = txtPrenom.Text;
-                    salarie.DateNaissance = DateTime.Parse(txtBDay.Text);
-                    salarie.SalaireBrut = decimal.Parse(txtSalaireBrut.Text);
-                    salarie.TauxCS = decimal.Parse(txtTauxCS.Text);
+                    salaries.Remove(salarie);
+                    if (chkCommercial.Checked)
+                    {
+                        salarie = new Commercial();
+                        ((Commercial)salarie).ChiffreAffaire = decimal.Parse(txtCA.Text);
+                        ((Commercial)salarie).Commission = decimal.Parse(txtComm.Text);
+                    }
+                    else salarie = new Salarie();
 
-                    salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                    // a programmer
-                }
-
-
-            }
-        }
-        private void AjoutSalarie()
-        {
-            if (IsValidChamps())
-            {
-                try
-                {
-                    salarie = new Salarie();
                     salarie.Matricule = txtMatricule.Text;
                     salarie.Nom = txtNom.Text;
                     salarie.Prenom = txtPrenom.Text;
@@ -186,14 +193,44 @@ namespace GestionSalaraies
 
                     salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    MessageBox.Show(e.Message);
-                    // a programmer
+                    throw;
                 }
 
 
             }
+        }
+        private bool AjoutSalarie()
+        {
+            if (IsValidChamps())
+            {
+                try
+                {
+                    salarie = new Salarie();
+                    salarie.Matricule = txtMatricule.Text;
+                    salarie.Nom = txtNom.Text;
+                    salarie.Prenom = txtPrenom.Text;
+                    salarie.DateNaissance = DateTime.ParseExact(txtBDay.Text, "dd/mm/yyyy", CultureInfo.CurrentCulture);
+                    salarie.SalaireBrut = decimal.Parse(txtSalaireBrut.Text);
+                    salarie.TauxCS = decimal.Parse(txtTauxCS.Text);
+                    salaries.Add(salarie);
+
+                    if (chkCommercial.Checked)
+                    {
+                        ((Commercial)salarie).ChiffreAffaire = decimal.Parse(txtCA.Text);
+                        ((Commercial)salarie).Commission = decimal.Parse(txtComm.Text);
+                    }
+
+                    salaries.Save(MonApplication.DispositifSauvegarde, Properties.Settings.Default.AppData);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return true;
+            }
+            else return false;
         }
 
         private void SupprimerSalarie()
@@ -211,11 +248,57 @@ namespace GestionSalaraies
                 valid = false;
                 epSalarie.SetError(txtMatricule, "Le matricule n'est pas valide");
 
+            } else epSalarie.SetError(txtMatricule, string.Empty);
+
+            if (!Salarie.IsNomPrenomValide(txtNom.Text))
+            {
+                valid = false;
+                epSalarie.SetError(txtNom, "Le nom n'est pas valide");
             }
-            else epSalarie.SetError(txtMatricule, string.Empty);
+            else epSalarie.SetError(txtNom, string.Empty);
 
-            // A terminer
+            if (!Salarie.IsNomPrenomValide(txtPrenom.Text))
+            {
+                valid = false;
+                epSalarie.SetError(txtPrenom, "Le prénom n'est pas valide");
+            }
+            else epSalarie.SetError(txtPrenom, string.Empty);
 
+            DateTime sertArien1;
+            if (!DateTime.TryParse(txtBDay.Text, out sertArien1))
+            {
+                valid = false;
+                epSalarie.SetError(txtBDay, "La date de naissance n'est pas valide");
+            } else epSalarie.SetError(txtBDay, string.Empty);
+
+            decimal sertArien2;
+            if (!decimal.TryParse(txtSalaireBrut.Text, out sertArien2))
+            {
+                valid = false;
+                epSalarie.SetError(txtSalaireBrut, "Le salaire brut n'est pas valide");
+            } else epSalarie.SetError(txtSalaireBrut, string.Empty);
+
+            if (!decimal.TryParse(txtTauxCS.Text.Replace('.',','), out sertArien2))
+            {
+                valid = false;
+                epSalarie.SetError(txtTauxCS, "Le taux CA n'est pas valide");
+            } else epSalarie.SetError(txtTauxCS, string.Empty);
+
+            if (chkCommercial.Checked)
+            {
+                if (!decimal.TryParse(txtCA.Text, out sertArien2))
+                {
+                    valid = false;
+                    epSalarie.SetError(txtCA, "Le CA n'est pas valide");
+                }
+                else epSalarie.SetError(txtCA, string.Empty);
+                if (!decimal.TryParse(txtComm.Text, out sertArien2))
+                {
+                    valid = false;
+                    epSalarie.SetError(txtComm, "La commision n'est pas valide");
+                }
+                else epSalarie.SetError(txtComm, string.Empty);
+            }
             return valid;
         }
 
@@ -263,10 +346,12 @@ namespace GestionSalaraies
         #region Bouton : Annuler
         private void btnAnnulerModification_Click(object sender, EventArgs e)
         {
+            epSalarie.Clear();
             GestionnaireContextes(Contextes.ModificationAnnuler);
         }
         private void btnAnnulerAjout_Click(object sender, EventArgs e)
         {
+            epSalarie.Clear();
             GestionnaireContextes(Contextes.Initial);
         }
         #endregion
@@ -279,10 +364,24 @@ namespace GestionSalaraies
         }
         private void btnValiderAjout_Click(object sender, EventArgs e)
         {
-            AjoutSalarie();
-            GestionnaireContextes(Contextes.AjoutValider);
+            if(AjoutSalarie()) GestionnaireContextes(Contextes.AjoutValider);
         }
-#endregion
         #endregion
+
+        #endregion
+
+        private void chkCommercial_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (chkCommercial.Checked)
+            {
+                pnlCommercial.Enabled = true;
+            }
+            else
+            {
+                txtCA.Text = "";
+                txtComm.Text = "";
+                pnlCommercial.Enabled = false;
+            }
+        }
     }
 }

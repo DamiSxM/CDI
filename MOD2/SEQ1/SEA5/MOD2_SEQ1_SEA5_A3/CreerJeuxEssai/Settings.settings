@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="AppData" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">F:\Documents\AFPA\CDI\MOD2\SEQ1\SEA5\MOD2_SEQ1_SEA5_A3</Value>
+      <Value Profile="(Default)">D:\CDI\Documents\CDI\MOD2\SEQ1\SEA5\MOD2_SEQ1_SEA5_A3</Value>
     </Setting>
     <Setting Name="AppData2" Type="System.String" Scope="Application">
       <Value Profile="(Default)">D:\Data</Value>

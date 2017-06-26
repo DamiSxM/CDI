@@ -20,6 +20,8 @@ namespace GestionSalaraies
         Roles roles;
         Utilisateur utilisateur;
 
+        FrmRechercheUtilisateur _rechercheUtilisateur;
+
         enum Contextes
         {
             Initial = 0,
@@ -129,7 +131,7 @@ namespace GestionSalaraies
 
         }
 
-        private void AjouterUtilisateur()
+        private bool AjouterUtilisateur()
         {
             if (IsValidChamps())
             {
@@ -148,12 +150,12 @@ namespace GestionSalaraies
                     ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
                     utilisateurs.Save(serialiseur, Properties.Settings.Default.AppData);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    MessageBox.Show(e.Message);
-                    // a programmer
+                    throw;
                 }
-            }
+                return true;
+            } else return false;
         }
 
         private void ChargerValeursUtilisateur()
@@ -173,7 +175,6 @@ namespace GestionSalaraies
         }
         private void ModifierUtilisateur()
         {
-
             if (IsValidChamps())
             {
                 try
@@ -194,33 +195,40 @@ namespace GestionSalaraies
                     ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
                     utilisateurs.Save(serialiseur, Properties.Settings.Default.AppData);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    MessageBox.Show(e.Message);
-                    // a programmer
+                    throw;
                 }
-
-
             }
         }
 
         private bool IsValidChamps()
         {
             bool valid = true;
-
             if (!Utilisateur.IsIdentifiantValide(txtIdentifiant.Text))
             {
                 valid = false;
                 epUtilisateur.SetError(txtIdentifiant, "L'identifiant n'est pas valide");
-
             }
-            else
+            else epUtilisateur.SetError(txtIdentifiant, string.Empty);
+
+            if (!Utilisateur.IsMotPasseValide(txtMotDePasse.Text))
             {
-                epUtilisateur.SetError(txtIdentifiant, string.Empty);
+                valid = false;
+                epUtilisateur.SetError(txtMotDePasse, "Le mot de passe n'est pas valide");
+            } else epUtilisateur.SetError(txtMotDePasse, string.Empty);
+
+            if (txtNom.Text == "")
+            {
+                valid = false;
+                epUtilisateur.SetError(txtNom, "Le nom ne doit pas être vide");
             }
-
-
-
+            else epUtilisateur.SetError(txtNom, string.Empty);
+            if (cbRoles.SelectedIndex == -1)
+            {
+                valid = false;
+                epUtilisateur.SetError(cbRoles, "Le role ne doit pas être vide");
+            } else epUtilisateur.SetError(cbRoles, string.Empty);
             return valid;
         }
 
@@ -229,8 +237,6 @@ namespace GestionSalaraies
             roles = new Roles();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
             roles.Load(serialiseur, Properties.Settings.Default.AppData);
-            //roles.Load(serialiseur, Properties.Settings.Default.AppData2);
-
             foreach (Role item in roles)
             {
                 cbRoles.Items.Add(item.Identifiant);
@@ -242,7 +248,6 @@ namespace GestionSalaraies
             utilisateurs = new Utilisateurs();
             ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
             utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData);
-            //utilisateurs.Load(serialiseur, Properties.Settings.Default.AppData2);
             foreach (Utilisateur item in utilisateurs)
             {
                 cbUtilisateurs.Items.Add(item.Identifiant);
@@ -285,10 +290,12 @@ namespace GestionSalaraies
         #region Bouton : Annuler
         private void btnAnnulerModification_Click(object sender, EventArgs e)
         {
+            epUtilisateur.Clear();
             GestionnaireContextes(Contextes.ModificationAnnuler);
         }
         private void btnAnnulerAjout_Click(object sender, EventArgs e)
         {
+            epUtilisateur.Clear();
             GestionnaireContextes(Contextes.Initial);
         }
         #endregion
@@ -311,8 +318,7 @@ namespace GestionSalaraies
         /// <param name="e"></param>
         private void btnValiderAjout_Click(object sender, EventArgs e)
         {
-            AjouterUtilisateur();
-            GestionnaireContextes(Contextes.AjoutValider);
+            if (AjouterUtilisateur()) GestionnaireContextes(Contextes.AjoutValider);
         }
         #endregion
 
@@ -322,7 +328,25 @@ namespace GestionSalaraies
             GestionnaireContextes(Contextes.AjoutInitial); ;
         }
         #endregion
+
         #endregion
 
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            _rechercheUtilisateur = new FrmRechercheUtilisateur();
+            _rechercheUtilisateur.Utilisateurs = utilisateurs;
+            _rechercheUtilisateur.FormClosing += Ru_FormClosing;
+            _rechercheUtilisateur.Show();
+        }
+
+        private void Ru_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            utilisateur = utilisateurs.UtilisateurByMatricule(_rechercheUtilisateur.IdUtilisateur);
+            if (utilisateur != null)
+            {
+                ChargerValeursUtilisateur();
+                GestionnaireContextes(Contextes.Consultation);
+            }
+        }
     }
 }

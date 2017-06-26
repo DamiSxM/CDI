@@ -26,13 +26,27 @@ namespace GestionSalaraies
         #region Bouttons : Events
         private void menu_gestUtilisateurs_Click(object sender, EventArgs e)
         {
-            _frm_User.WindowState = FormWindowState.Maximized;
-            _frm_User.Show();
+            try
+            {
+                _frm_User.WindowState = FormWindowState.Maximized;
+                _frm_User.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gestion Utilisateur : " + ex.Message);
+            }
         }
         private void menu_gestSalaries_Click(object sender, EventArgs e)
         {
-            _frm_Salarie.WindowState = FormWindowState.Maximized;
-            _frm_Salarie.Show();
+            try
+            {
+                _frm_Salarie.WindowState = FormWindowState.Maximized;
+                _frm_Salarie.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gestion Salarié : " + ex.Message);
+            }
         }
         #endregion
 
