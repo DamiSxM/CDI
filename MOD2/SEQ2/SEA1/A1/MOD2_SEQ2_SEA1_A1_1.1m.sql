@@ -1,0 +1,1 @@
+select nom, SalaireBrut, (0.75 * SalaireBrut) as Charges  from pilote where (0.75 * SalaireBrut) > 6000 order by Charges desc

@@ -1,0 +1,1 @@
+﻿-- Donnez le délai de livraison moyen d’une commande (en jours).select avg(datediff(dd, OrderDate, ShippedDate))from Orders

@@ -1,0 +1,1 @@
+Select Nom from Pilote join vol on Pilote.Pil# = vol.Pilote where VilleDepart = 'Nice'

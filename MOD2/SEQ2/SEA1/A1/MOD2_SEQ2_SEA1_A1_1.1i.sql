@@ -1,0 +1,1 @@
+select * from avion where Marque = 'AIRBUS' and Localisation != 'NICE' and Capacite is not null

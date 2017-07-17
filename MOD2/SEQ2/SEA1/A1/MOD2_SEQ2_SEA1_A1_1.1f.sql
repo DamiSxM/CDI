@@ -1,0 +1,1 @@
+Select distinct TypeAvion from avion where Capacite < 200

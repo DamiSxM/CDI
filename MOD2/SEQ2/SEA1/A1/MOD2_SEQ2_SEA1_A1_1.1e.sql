@@ -1,0 +1,1 @@
+Select TypeAvion from avion where Capacite < 200 order by capacite desc

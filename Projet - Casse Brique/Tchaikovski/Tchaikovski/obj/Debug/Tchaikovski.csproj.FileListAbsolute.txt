@@ -12,3 +12,6 @@ D:\CDI\Documents\Dami\Projet - Casse Brique\Tchaikovski\Tchaikovski\obj\Debug\Tc
 D:\CDI\Documents\Dami\Projet - Casse Brique\Tchaikovski\Tchaikovski\obj\Debug\Tchaikovski.csproj.GenerateResource.Cache
 D:\CDI\Documents\Dami\Projet - Casse Brique\Tchaikovski\Tchaikovski\obj\Debug\Tchaikovski.exe
 D:\CDI\Documents\Dami\Projet - Casse Brique\Tchaikovski\Tchaikovski\obj\Debug\Tchaikovski.pdb
+D:\CDI\Documents\CDI\Projet - Casse Brique\Tchaikovski\Tchaikovski\bin\Debug\Tchaikovski.exe.config
+D:\CDI\Documents\CDI\Projet - Casse Brique\Tchaikovski\Tchaikovski\obj\Debug\Tchaikovski.exe
+D:\CDI\Documents\CDI\Projet - Casse Brique\Tchaikovski\Tchaikovski\obj\Debug\Tchaikovski.pdb
