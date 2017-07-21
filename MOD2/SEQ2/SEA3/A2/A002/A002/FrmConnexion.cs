@@ -96,54 +96,29 @@ namespace A002
         /// <param name="Id"></param>
         /// <param name="MotPasse"></param>
         /// <returns></returns>
-        private InfosConnexion ControlerInfosConnexion(string identifiant, string motPasse,string nomApplication)
+        private InfosConnexion ControlerInfosConnexion(string identifiant, string motPasse, string nomApplication)
         {
-            SqlConnection con = new SqlConnection(Properties.Settings.Default.SecuriteConnectingString);
-            con.Open();
-
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "psUtilisateur_Authentifier";
-
-            SqlCommandBuilder.DeriveParameters(cmd);
-            cmd.Parameters["@IDUtilisateur"].Value = txtIDUtilisateur.Text;
-            cmd.Parameters["@MotPasseClair"].Value = txtMotPasse.Text;
-            cmd.Parameters["@NomApplication"].Value = Properties.Settings.Default.NomApplication;
-            cmd.Parameters["@IDRole"].Direction = ParameterDirection.Output;
-            cmd.ExecuteNonQuery();
-
-            con.Close();
-
-
-            switch ((int)cmd.Parameters[0].Value)
+            using (SqlConnection con = new SqlConnection(nomApplication))
             {
-                case 0:
-                    Guid role = (Guid)cmd.Parameters["@IDRole"].Value;
-                    MessageBox.Show(role.ToString());
-                    return InfosConnexion.ConnexionOK;
-                    break;
-                case -101: return InfosConnexion.UtilisateurInconnu;
-                    break;
-                case -102: return InfosConnexion.CompteBloque;
-                    break;
-                case -103: return InfosConnexion.MotPasseInvalide;
-                    break;
-                case -104: return InfosConnexion.ApplicationInexistante;
-                    break;
-                case -105: return InfosConnexion.RoleInexistant;
+                con.Open();
+
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "psUtilisateur_Authentifier";
+
+                SqlCommandBuilder.DeriveParameters(cmd);
+                cmd.Parameters["@IDUtilisateur"].Value = identifiant;
+                cmd.Parameters["@MotPasseClair"].Value = motPasse;
+                cmd.Parameters["@NomApplication"].Value = Properties.Settings.Default.NomApplication;
+                cmd.Parameters["@IDRole"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
             }
 
+            if ((int)cmd.Parameters["@RETURN_VALUE"].Value == 0)
+                MessageBox.Show(cmd.Parameters["@IDRole"].Value.ToString());
 
-
-            //@IDUtilisateur as char(10),
-            //@MotPasseClair as nvarchar(50) = null,
-            //@NomApplication as nvarchar(255),
-            //@IDRole as uniqueidentifier output
-
-
-
-            return InfosConnexion.ApplicationInexistante;
+            return (InfosConnexion)cmd.Parameters["@RETURN_VALUE"].Value;
         }
 
         private void FrmConnexion_Shown(object sender, EventArgs e)

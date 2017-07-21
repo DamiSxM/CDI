@@ -37,9 +37,9 @@ namespace A001
 
                 while (rdr.Read())
                 {
-                    string client = rdr.GetString(0);
-                    string nom = rdr.GetString(1);
-                    string contact = rdr.GetString(2);
+                    string client = rdr.IsDBNull(0) ? "" : rdr.GetString(0);
+                    string nom = rdr.IsDBNull(1) ? "" : rdr.GetString(1);
+                    string contact = rdr.IsDBNull(2) ? "" : rdr.GetString(2);
                     int cde = rdr.GetInt32(3);
                     DateTime date = rdr.GetDateTime(4);
 
@@ -50,7 +50,7 @@ namespace A001
                         contact,
                         cde.ToString(),
                         date.ToString()
-                        ));
+                    ));
                 }
                 rdr.Close();
 

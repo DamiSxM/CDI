@@ -44,10 +44,9 @@
             // btnValider
             // 
             this.btnValider.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnValider.Location = new System.Drawing.Point(16, 194);
-            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnValider.Location = new System.Drawing.Point(12, 158);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(125, 28);
+            this.btnValider.Size = new System.Drawing.Size(94, 23);
             this.btnValider.TabIndex = 4;
             this.btnValider.Text = "Se connecter";
             this.btnValider.UseVisualStyleBackColor = true;
@@ -57,10 +56,9 @@
             // 
             this.btnAbandonner.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAbandonner.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAbandonner.Location = new System.Drawing.Point(258, 194);
-            this.btnAbandonner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAbandonner.Location = new System.Drawing.Point(194, 158);
             this.btnAbandonner.Name = "btnAbandonner";
-            this.btnAbandonner.Size = new System.Drawing.Size(121, 28);
+            this.btnAbandonner.Size = new System.Drawing.Size(91, 23);
             this.btnAbandonner.TabIndex = 5;
             this.btnAbandonner.Text = "Quitter";
             this.btnAbandonner.UseVisualStyleBackColor = true;
@@ -72,11 +70,9 @@
             this.gbConnexion.Controls.Add(this.txtMotPasse);
             this.gbConnexion.Controls.Add(this.txtIDUtilisateur);
             this.gbConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.gbConnexion.Location = new System.Drawing.Point(16, 15);
-            this.gbConnexion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbConnexion.Location = new System.Drawing.Point(12, 12);
             this.gbConnexion.Name = "gbConnexion";
-            this.gbConnexion.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbConnexion.Size = new System.Drawing.Size(363, 142);
+            this.gbConnexion.Size = new System.Drawing.Size(272, 115);
             this.gbConnexion.TabIndex = 6;
             this.gbConnexion.TabStop = false;
             this.gbConnexion.Text = "Paramètres d\'authentification";
@@ -84,39 +80,37 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 78);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(11, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 17);
+            this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Mot de Passe";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 34);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 17);
+            this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "ID Utilisateur";
             // 
             // txtMotPasse
             // 
-            this.txtMotPasse.Location = new System.Drawing.Point(131, 73);
-            this.txtMotPasse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMotPasse.Location = new System.Drawing.Point(98, 59);
             this.txtMotPasse.Name = "txtMotPasse";
-            this.txtMotPasse.Size = new System.Drawing.Size(192, 22);
+            this.txtMotPasse.Size = new System.Drawing.Size(145, 20);
             this.txtMotPasse.TabIndex = 5;
+            this.txtMotPasse.Text = "vince";
             this.txtMotPasse.UseSystemPasswordChar = true;
             // 
             // txtIDUtilisateur
             // 
-            this.txtIDUtilisateur.Location = new System.Drawing.Point(131, 30);
-            this.txtIDUtilisateur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIDUtilisateur.Location = new System.Drawing.Point(98, 24);
             this.txtIDUtilisateur.Name = "txtIDUtilisateur";
-            this.txtIDUtilisateur.Size = new System.Drawing.Size(192, 22);
+            this.txtIDUtilisateur.Size = new System.Drawing.Size(145, 20);
             this.txtIDUtilisateur.TabIndex = 4;
+            this.txtIDUtilisateur.Text = "Bost";
             // 
             // erpConnexion
             // 
@@ -125,16 +119,15 @@
             // FrmConnexion
             // 
             this.AcceptButton = this.btnValider;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAbandonner;
-            this.ClientSize = new System.Drawing.Size(422, 265);
+            this.ClientSize = new System.Drawing.Size(316, 215);
             this.ControlBox = false;
             this.Controls.Add(this.gbConnexion);
             this.Controls.Add(this.btnAbandonner);
             this.Controls.Add(this.btnValider);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmConnexion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Identifiez-vous ";
