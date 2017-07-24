@@ -25,7 +25,7 @@ namespace A2
 
         private void productsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.productsBindingSource.CancelEdit();
+            //this.productsBindingSource.CancelEdit();
             /*this.Validate();
             this.productsBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.comptoirSimplifieDataSet);*/
@@ -137,7 +137,7 @@ namespace A2
             return !productRow.HasErrors;
         }
 
-        private bool IsValid()
+        /*private bool IsValid()
         {
             DataRowView drv = productsBindingSource.Current as DataRowView;
             ComptoirSimplifieDataSet.ProductsRow pr = drv.Row as ComptoirSimplifieDataSet.ProductsRow;
@@ -165,6 +165,6 @@ namespace A2
             else ep_Products.SetError(productNameTextBox, string.Empty);
 
             return res;
-        }
+        }*/
     }
 }

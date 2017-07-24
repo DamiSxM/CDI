@@ -16,7 +16,8 @@ namespace A3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmCommandes());
+            //Application.Run(new frmCustomer());
         }
     }
 }
