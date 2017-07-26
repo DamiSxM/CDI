@@ -1,6 +1,6 @@
 ﻿namespace A3
 {
-    partial class frmCommandes
+    partial class frmOrders
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

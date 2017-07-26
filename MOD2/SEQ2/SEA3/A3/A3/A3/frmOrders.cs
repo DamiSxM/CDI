@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace A3
 {
-    public partial class frmCommandes : Form
+    public partial class frmOrders : Form
     {
-        public frmCommandes()
+        public frmOrders()
         {
             InitializeComponent();
 
@@ -78,18 +78,28 @@ namespace A3
 
         private void btnRechercher_Click(object sender, EventArgs e)
         {
-            frmCustomer cus = new frmCustomer();
-            cus.IDFound += Cus_IDFound;
-            cus.Show();
+            frmFindCustomer findCustomer = new frmFindCustomer();
+            findCustomer.IDFound += FindCustomer_IDFound;
+            findCustomer.Show();
         }
 
-        private void Cus_IDFound(string id)
+        private void FindCustomer_IDFound(string id)
         {
             ordersTableAdapter.ClearBeforeFill = true;
 
             //comptoirSimplifieDataSet.Orders = ordersTableAdapter.GetDataByCustomerID(id);
 
-            ordersTableAdapter.FillByCustomerID(comptoirSimplifieDataSet.Orders, id);
+            try
+            {
+                ordersTableAdapter.FillByCustomerID(comptoirSimplifieDataSet.Orders, id);
+            }
+            catch
+            {
+                foreach (DataRow currentError in comptoirSimplifieDataSet.Orders.GetErrors())
+                {
+                    System.Diagnostics.Debug.WriteLine(currentError.RowError);
+                }
+            }
 
             ordersComboBox.Enabled = (comptoirSimplifieDataSet.Orders.Rows.Count > 0);
         }

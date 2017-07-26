@@ -17,15 +17,6 @@ namespace A3
             InitializeComponent();
         }
 
-        public delegate void FindID(string id);
-        public event FindID IDFound;
-
-        void OnIDFound(string id)
-        {
-            if (IDFound != null) IDFound(id);
-        }
-
-
         private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -36,50 +27,70 @@ namespace A3
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
+            // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Pays'. Vous pouvez la déplacer ou la supprimer selon les besoins.
+            this.paysTableAdapter.Fill(this.comptoirSimplifieDataSet.Pays);
             // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Customers'. Vous pouvez la déplacer ou la supprimer selon les besoins.
             //this.customersTableAdapter.Fill(this.comptoirSimplifieDataSet.Customers);
 
         }
 
-        private void btnRecherche_Click(object sender, EventArgs e)
+        private void btnRechercher_Click(object sender, EventArgs e)
+        {
+            frmFindCustomer findCustome = new frmFindCustomer();
+            findCustome.IDFound += FindCustome_IDFound;
+            findCustome.Show();
+        }
+
+        private void FindCustome_IDFound(string id)
         {
             customersTableAdapter.ClearBeforeFill = true;
 
-            if (txtCustomerID.Text != "" && txtCompanyName.Text != "")
+            //comptoirSimplifieDataSet.Orders = ordersTableAdapter.GetDataByCustomerID(id);
+
+            try
             {
-                customersTableAdapter.FillByCustomerID_and_CompanyName(this.comptoirSimplifieDataSet.Customers, txtCustomerID.Text, txtCompanyName.Text);
+                customersTableAdapter.FillByID(comptoirSimplifieDataSet.Customers, id);
             }
-            else
+            catch
             {
-                if (txtCustomerID.Text != "")
+                foreach (DataRow currentError in comptoirSimplifieDataSet.Customers.GetErrors())
                 {
-                    customersTableAdapter.FillByID(this.comptoirSimplifieDataSet.Customers, txtCustomerID.Text);
-                }
-                else if (txtCompanyName.Text != "")
-                {
-                    customersTableAdapter.FillByCompanyName(this.comptoirSimplifieDataSet.Customers, txtCompanyName.Text);
+                    System.Diagnostics.Debug.WriteLine(currentError.RowError);
                 }
             }
         }
 
-        private void customersDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnNouveau_Click(object sender, EventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            MessageBox.Show(dgv.Rows[e.RowIndex].Cells[0].Value.ToString());
-           
+
+            customersBindingSource.AddNew();
+
+            comptoirSimplifieDataSet.Categories.n
+
+            /*comptoirSimplifieDataSet.Customers.AddCustomersRow(
+                customerIDTextBox.Text,
+                companyNameTextBox.Text,
+                contactNameTextBox.Text,
+                contactTitleTextBox.Text,
+                emailTextBox.Text,
+                creditCardTextBox.Text,
+                addressTextBox.Text,
+                cityTextBox.Text,
+                regionTextBox.Text,
+                postalCodeTextBox.Text,
+                paysBindingSource.Current as ComptoirSimplifieDataSet.PaysRow,
+                phoneTextBox.Text,
+                faxTextBox.Text,
+                null
+            );
+
+            this.tableAdapterManager.UpdateAll(this.comptoirSimplifieDataSet);*/
         }
 
-        private void customersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnValider_Click(object sender, EventArgs e)
         {
-
-            ListBox lb = sender as ListBox;
-            DataRowView dtrv = lb.SelectedItem as DataRowView;
-            if (dtrv != null)
-            {
-                ComptoirSimplifieDataSet.CustomersRow row = dtrv.Row as ComptoirSimplifieDataSet.CustomersRow;
-                //MessageBox.Show(row.CustomerID);
-                OnIDFound(row.CustomerID);
-            }
+            customersBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.comptoirSimplifieDataSet);
         }
     }
 }

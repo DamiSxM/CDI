@@ -54,25 +54,43 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ComptoirSimplifieDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="frmCommandes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCommandes.Designer.cs">
-      <DependentUpon>frmCommandes.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCustomer.Designer.cs">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrders.Designer.cs">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindCustomer.Designer.cs">
+      <DependentUpon>frmFindCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmCommandes.resx">
-      <DependentUpon>frmCommandes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOrders.resx">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindCustomer.resx">
+      <DependentUpon>frmFindCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
