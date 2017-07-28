@@ -15,23 +15,29 @@ namespace A3
         public frmCustomer()
         {
             InitializeComponent();
+            paysBindingSource.CurrentChanged += PaysBindingSource_CurrentChanged;
+        }
+
+        private void PaysBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            if (paysBindingSource.Current as ComptoirSimplifieDataSet.PaysRow != null)
+            {
+                string idPays = (paysBindingSource.Current as ComptoirSimplifieDataSet.PaysRow).IdPays2;
+                (customersBindingSource.Current as ComptoirSimplifieDataSet.CustomersRow).idPays = idPays;
+            }
         }
 
         private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
+            /*this.Validate();
             this.customersBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.comptoirSimplifieDataSet);
+            this.tableAdapterManager.UpdateAll(this.comptoirSimplifieDataSet);*/
 
         }
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Pays'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.paysTableAdapter.Fill(this.comptoirSimplifieDataSet.Pays);
-            // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Customers'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            //this.customersTableAdapter.Fill(this.comptoirSimplifieDataSet.Customers);
-
+            paysTableAdapter.Fill(this.comptoirSimplifieDataSet.Pays);
         }
 
         private void btnRechercher_Click(object sender, EventArgs e)
@@ -44,53 +50,41 @@ namespace A3
         private void FindCustome_IDFound(string id)
         {
             customersTableAdapter.ClearBeforeFill = true;
-
-            //comptoirSimplifieDataSet.Orders = ordersTableAdapter.GetDataByCustomerID(id);
-
-            try
-            {
-                customersTableAdapter.FillByID(comptoirSimplifieDataSet.Customers, id);
-            }
-            catch
-            {
-                foreach (DataRow currentError in comptoirSimplifieDataSet.Customers.GetErrors())
-                {
-                    System.Diagnostics.Debug.WriteLine(currentError.RowError);
-                }
-            }
+            customersTableAdapter.FillByID(comptoirSimplifieDataSet.Customers, id);
         }
 
         private void btnNouveau_Click(object sender, EventArgs e)
         {
-
             customersBindingSource.AddNew();
-
-            comptoirSimplifieDataSet.Categories.n
-
-            /*comptoirSimplifieDataSet.Customers.AddCustomersRow(
-                customerIDTextBox.Text,
-                companyNameTextBox.Text,
-                contactNameTextBox.Text,
-                contactTitleTextBox.Text,
-                emailTextBox.Text,
-                creditCardTextBox.Text,
-                addressTextBox.Text,
-                cityTextBox.Text,
-                regionTextBox.Text,
-                postalCodeTextBox.Text,
-                paysBindingSource.Current as ComptoirSimplifieDataSet.PaysRow,
-                phoneTextBox.Text,
-                faxTextBox.Text,
-                null
-            );
-
-            this.tableAdapterManager.UpdateAll(this.comptoirSimplifieDataSet);*/
         }
 
         private void btnValider_Click(object sender, EventArgs e)
         {
             customersBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.comptoirSimplifieDataSet);
+            tableAdapterManager.UpdateAll(comptoirSimplifieDataSet);
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            switch(MessageBox.Show("Voule-vous vraiment supprimer ce customer ?", "Attention !", MessageBoxButtons.OKCancel))
+            {
+                case DialogResult.OK:
+                    customersBindingSource.RemoveCurrent();
+                    customersBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(comptoirSimplifieDataSet);
+                    break;
+            }
+
+        }
+
+        private void frmCustomer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

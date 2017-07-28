@@ -29,90 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label orderIDLabel;
-            System.Windows.Forms.Label productIDLabel;
-            System.Windows.Forms.Label unitPriceLabel;
-            System.Windows.Forms.Label quantityLabel;
-            System.Windows.Forms.Label discountLabel;
             System.Windows.Forms.Label customerIDLabel;
             this.comptoirSimplifieDataSet = new A3.ComptoirSimplifieDataSet();
-            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customersTableAdapter = new A3.ComptoirSimplifieDataSetTableAdapters.CustomersTableAdapter();
             this.tableAdapterManager = new A3.ComptoirSimplifieDataSetTableAdapters.TableAdapterManager();
             this.ordersTableAdapter = new A3.ComptoirSimplifieDataSetTableAdapters.OrdersTableAdapter();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ordersComboBox = new System.Windows.Forms.ComboBox();
             this.fKOrderDetailsOrdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.order_DetailsTableAdapter = new A3.ComptoirSimplifieDataSetTableAdapters.Order_DetailsTableAdapter();
-            this.orderIDTextBox = new System.Windows.Forms.TextBox();
-            this.productIDTextBox = new System.Windows.Forms.TextBox();
-            this.unitPriceTextBox = new System.Windows.Forms.TextBox();
-            this.quantityTextBox = new System.Windows.Forms.TextBox();
-            this.discountTextBox = new System.Windows.Forms.TextBox();
             this.btnRechercher = new System.Windows.Forms.Button();
             this.customerIDLabel1 = new System.Windows.Forms.Label();
             this.paysTableAdapter = new A3.ComptoirSimplifieDataSetTableAdapters.PaysTableAdapter();
-            orderIDLabel = new System.Windows.Forms.Label();
-            productIDLabel = new System.Windows.Forms.Label();
-            unitPriceLabel = new System.Windows.Forms.Label();
-            quantityLabel = new System.Windows.Forms.Label();
-            discountLabel = new System.Windows.Forms.Label();
+            this.ordersDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_DetailsDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             customerIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.comptoirSimplifieDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKOrderDetailsOrdersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.order_DetailsDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // orderIDLabel
-            // 
-            orderIDLabel.AutoSize = true;
-            orderIDLabel.Location = new System.Drawing.Point(12, 69);
-            orderIDLabel.Name = "orderIDLabel";
-            orderIDLabel.Size = new System.Drawing.Size(50, 13);
-            orderIDLabel.TabIndex = 2;
-            orderIDLabel.Text = "Order ID:";
-            // 
-            // productIDLabel
-            // 
-            productIDLabel.AutoSize = true;
-            productIDLabel.Location = new System.Drawing.Point(12, 95);
-            productIDLabel.Name = "productIDLabel";
-            productIDLabel.Size = new System.Drawing.Size(61, 13);
-            productIDLabel.TabIndex = 4;
-            productIDLabel.Text = "Product ID:";
-            // 
-            // unitPriceLabel
-            // 
-            unitPriceLabel.AutoSize = true;
-            unitPriceLabel.Location = new System.Drawing.Point(12, 121);
-            unitPriceLabel.Name = "unitPriceLabel";
-            unitPriceLabel.Size = new System.Drawing.Size(56, 13);
-            unitPriceLabel.TabIndex = 6;
-            unitPriceLabel.Text = "Unit Price:";
-            // 
-            // quantityLabel
-            // 
-            quantityLabel.AutoSize = true;
-            quantityLabel.Location = new System.Drawing.Point(12, 147);
-            quantityLabel.Name = "quantityLabel";
-            quantityLabel.Size = new System.Drawing.Size(49, 13);
-            quantityLabel.TabIndex = 8;
-            quantityLabel.Text = "Quantity:";
-            // 
-            // discountLabel
-            // 
-            discountLabel.AutoSize = true;
-            discountLabel.Location = new System.Drawing.Point(12, 173);
-            discountLabel.Name = "discountLabel";
-            discountLabel.Size = new System.Drawing.Size(52, 13);
-            discountLabel.TabIndex = 10;
-            discountLabel.Text = "Discount:";
             // 
             // customerIDLabel
             // 
             customerIDLabel.AutoSize = true;
-            customerIDLabel.Location = new System.Drawing.Point(12, 9);
+            customerIDLabel.Location = new System.Drawing.Point(94, 14);
             customerIDLabel.Name = "customerIDLabel";
             customerIDLabel.Size = new System.Drawing.Size(68, 13);
             customerIDLabel.TabIndex = 12;
@@ -122,11 +71,6 @@
             // 
             this.comptoirSimplifieDataSet.DataSetName = "ComptoirSimplifieDataSet";
             this.comptoirSimplifieDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customersBindingSource
-            // 
-            this.customersBindingSource.DataMember = "Customers";
-            this.customersBindingSource.DataSource = this.comptoirSimplifieDataSet;
             // 
             // customersTableAdapter
             // 
@@ -152,18 +96,6 @@
             this.ordersBindingSource.DataMember = "Orders";
             this.ordersBindingSource.DataSource = this.comptoirSimplifieDataSet;
             // 
-            // ordersComboBox
-            // 
-            this.ordersComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.customersBindingSource, "CustomerID", true));
-            this.ordersComboBox.DataSource = this.ordersBindingSource;
-            this.ordersComboBox.DisplayMember = "OrderID";
-            this.ordersComboBox.FormattingEnabled = true;
-            this.ordersComboBox.Location = new System.Drawing.Point(12, 39);
-            this.ordersComboBox.Name = "ordersComboBox";
-            this.ordersComboBox.Size = new System.Drawing.Size(300, 21);
-            this.ordersComboBox.TabIndex = 1;
-            this.ordersComboBox.ValueMember = "CustomerID";
-            // 
             // fKOrderDetailsOrdersBindingSource
             // 
             this.fKOrderDetailsOrdersBindingSource.DataMember = "FK_Order_Details_Orders";
@@ -173,51 +105,11 @@
             // 
             this.order_DetailsTableAdapter.ClearBeforeFill = true;
             // 
-            // orderIDTextBox
-            // 
-            this.orderIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKOrderDetailsOrdersBindingSource, "OrderID", true));
-            this.orderIDTextBox.Location = new System.Drawing.Point(79, 66);
-            this.orderIDTextBox.Name = "orderIDTextBox";
-            this.orderIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.orderIDTextBox.TabIndex = 3;
-            // 
-            // productIDTextBox
-            // 
-            this.productIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKOrderDetailsOrdersBindingSource, "ProductID", true));
-            this.productIDTextBox.Location = new System.Drawing.Point(79, 92);
-            this.productIDTextBox.Name = "productIDTextBox";
-            this.productIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.productIDTextBox.TabIndex = 5;
-            // 
-            // unitPriceTextBox
-            // 
-            this.unitPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKOrderDetailsOrdersBindingSource, "UnitPrice", true));
-            this.unitPriceTextBox.Location = new System.Drawing.Point(79, 118);
-            this.unitPriceTextBox.Name = "unitPriceTextBox";
-            this.unitPriceTextBox.Size = new System.Drawing.Size(100, 20);
-            this.unitPriceTextBox.TabIndex = 7;
-            // 
-            // quantityTextBox
-            // 
-            this.quantityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKOrderDetailsOrdersBindingSource, "Quantity", true));
-            this.quantityTextBox.Location = new System.Drawing.Point(79, 144);
-            this.quantityTextBox.Name = "quantityTextBox";
-            this.quantityTextBox.Size = new System.Drawing.Size(100, 20);
-            this.quantityTextBox.TabIndex = 9;
-            // 
-            // discountTextBox
-            // 
-            this.discountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fKOrderDetailsOrdersBindingSource, "Discount", true));
-            this.discountTextBox.Location = new System.Drawing.Point(79, 170);
-            this.discountTextBox.Name = "discountTextBox";
-            this.discountTextBox.Size = new System.Drawing.Size(100, 20);
-            this.discountTextBox.TabIndex = 11;
-            // 
             // btnRechercher
             // 
-            this.btnRechercher.Location = new System.Drawing.Point(237, 9);
+            this.btnRechercher.Location = new System.Drawing.Point(15, 9);
             this.btnRechercher.Name = "btnRechercher";
-            this.btnRechercher.Size = new System.Drawing.Size(75, 23);
+            this.btnRechercher.Size = new System.Drawing.Size(73, 23);
             this.btnRechercher.TabIndex = 12;
             this.btnRechercher.Text = "Rechercher";
             this.btnRechercher.UseVisualStyleBackColor = true;
@@ -235,32 +127,106 @@
             // 
             this.paysTableAdapter.ClearBeforeFill = true;
             // 
-            // frmCommandes
+            // ordersDataGridView
+            // 
+            this.ordersDataGridView.AutoGenerateColumns = false;
+            this.ordersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ordersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.ordersDataGridView.DataSource = this.ordersBindingSource;
+            this.ordersDataGridView.Location = new System.Drawing.Point(15, 39);
+            this.ordersDataGridView.Name = "ordersDataGridView";
+            this.ordersDataGridView.Size = new System.Drawing.Size(550, 106);
+            this.ordersDataGridView.TabIndex = 14;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "OrderID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "OrderID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "CustomerID";
+            this.dataGridViewTextBoxColumn2.HeaderText = "CustomerID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "OrderDate";
+            this.dataGridViewTextBoxColumn3.HeaderText = "OrderDate";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // order_DetailsDataGridView
+            // 
+            this.order_DetailsDataGridView.AutoGenerateColumns = false;
+            this.order_DetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.order_DetailsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.order_DetailsDataGridView.DataSource = this.fKOrderDetailsOrdersBindingSource;
+            this.order_DetailsDataGridView.Location = new System.Drawing.Point(15, 166);
+            this.order_DetailsDataGridView.Name = "order_DetailsDataGridView";
+            this.order_DetailsDataGridView.Size = new System.Drawing.Size(550, 166);
+            this.order_DetailsDataGridView.TabIndex = 14;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "OrderID";
+            this.dataGridViewTextBoxColumn4.HeaderText = "OrderID";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ProductID";
+            this.dataGridViewTextBoxColumn5.HeaderText = "ProductID";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "UnitPrice";
+            this.dataGridViewTextBoxColumn6.HeaderText = "UnitPrice";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Discount";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Discount";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // frmOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 203);
+            this.ClientSize = new System.Drawing.Size(696, 475);
+            this.Controls.Add(this.order_DetailsDataGridView);
+            this.Controls.Add(this.ordersDataGridView);
             this.Controls.Add(customerIDLabel);
             this.Controls.Add(this.customerIDLabel1);
             this.Controls.Add(this.btnRechercher);
-            this.Controls.Add(orderIDLabel);
-            this.Controls.Add(this.orderIDTextBox);
-            this.Controls.Add(productIDLabel);
-            this.Controls.Add(this.productIDTextBox);
-            this.Controls.Add(unitPriceLabel);
-            this.Controls.Add(this.unitPriceTextBox);
-            this.Controls.Add(quantityLabel);
-            this.Controls.Add(this.quantityTextBox);
-            this.Controls.Add(discountLabel);
-            this.Controls.Add(this.discountTextBox);
-            this.Controls.Add(this.ordersComboBox);
-            this.Name = "frmCommandes";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmOrders";
             this.Text = "Orders";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOrders_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.comptoirSimplifieDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKOrderDetailsOrdersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.order_DetailsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,22 +235,25 @@
         #endregion
 
         private ComptoirSimplifieDataSet comptoirSimplifieDataSet;
-        private System.Windows.Forms.BindingSource customersBindingSource;
         private ComptoirSimplifieDataSetTableAdapters.CustomersTableAdapter customersTableAdapter;
         private ComptoirSimplifieDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private ComptoirSimplifieDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter;
         private System.Windows.Forms.BindingSource ordersBindingSource;
-        private System.Windows.Forms.ComboBox ordersComboBox;
         private System.Windows.Forms.BindingSource fKOrderDetailsOrdersBindingSource;
         private ComptoirSimplifieDataSetTableAdapters.Order_DetailsTableAdapter order_DetailsTableAdapter;
-        private System.Windows.Forms.TextBox orderIDTextBox;
-        private System.Windows.Forms.TextBox productIDTextBox;
-        private System.Windows.Forms.TextBox unitPriceTextBox;
-        private System.Windows.Forms.TextBox quantityTextBox;
-        private System.Windows.Forms.TextBox discountTextBox;
         private System.Windows.Forms.Button btnRechercher;
         private System.Windows.Forms.Label customerIDLabel1;
         private ComptoirSimplifieDataSetTableAdapters.PaysTableAdapter paysTableAdapter;
+        private System.Windows.Forms.DataGridView ordersDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridView order_DetailsDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }
 

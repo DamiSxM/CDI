@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+//sing System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +15,8 @@ namespace A3
         public frmFindCustomer()
         {
             InitializeComponent();
+            //customersBindingSource.SuspendBinding();
+            //customersBindingSource.ResumeBinding();
         }
 
         public delegate void FindID(string id);
@@ -36,9 +38,7 @@ namespace A3
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Customers'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            //this.customersTableAdapter.Fill(this.comptoirSimplifieDataSet.Customers);
-
+            paysTableAdapter.Fill(this.comptoirSimplifieDataSet.Pays);
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
@@ -51,23 +51,15 @@ namespace A3
             }
             else
             {
-                try
+                if (txtCustomerID.Text != "")
                 {
-                    if (txtCustomerID.Text != "")
-                    {
-                        customersTableAdapter.FillByID(this.comptoirSimplifieDataSet.Customers, txtCustomerID.Text);
-                    }
-                    else if (txtCompanyName.Text != "")
-                    {
-                        customersTableAdapter.FillByCompanyName(this.comptoirSimplifieDataSet.Customers, txtCompanyName.Text);
-                    }
+                    //string s = new String('_', (comptoirSimplifieDataSet.Customers.CustomerIDColumn.MaxLength - txtCustomerID.Text.Length));
+                    //customersTableAdapter.FillByID(this.comptoirSimplifieDataSet.Customers, string.Format("{0}{1}", txtCustomerID.Text, s));
+                    customersTableAdapter.FillByID(this.comptoirSimplifieDataSet.Customers, txtCustomerID.Text);
                 }
-                catch
+                else if (txtCompanyName.Text != "")
                 {
-                    foreach (DataRow currentError in comptoirSimplifieDataSet.Customers.GetErrors())
-                    {
-                        System.Diagnostics.Debug.WriteLine(currentError.RowError);
-                    }
+                    customersTableAdapter.FillByCompanyName(this.comptoirSimplifieDataSet.Customers, txtCompanyName.Text);
                 }
             }
         }
@@ -79,15 +71,12 @@ namespace A3
 
         }
 
-        private void customersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void customersDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
-            ListBox lb = sender as ListBox;
-            DataRowView dtrv = lb.SelectedItem as DataRowView;
-            if (dtrv != null)
+            DataRowView drv = customersBindingSource.Current as DataRowView;
+            if (drv != null)
             {
-                ComptoirSimplifieDataSet.CustomersRow row = dtrv.Row as ComptoirSimplifieDataSet.CustomersRow;
-                //MessageBox.Show(row.CustomerID);
+                ComptoirSimplifieDataSet.CustomersRow row = drv.Row as ComptoirSimplifieDataSet.CustomersRow;
                 OnIDFound(row.CustomerID);
             }
         }

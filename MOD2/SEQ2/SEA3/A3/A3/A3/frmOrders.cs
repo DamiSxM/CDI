@@ -16,8 +16,8 @@ namespace A3
         {
             InitializeComponent();
 
-            ordersComboBox.Enabled = false;
-
+            //ordersComboBox.Enabled = false;
+            paysTableAdapter.Fill(comptoirSimplifieDataSet.Pays);
             ordersBindingSource.CurrentChanged += OrdersBindingSource_CurrentChanged;
         }
 
@@ -31,25 +31,9 @@ namespace A3
                 order_DetailsTableAdapter.ClearBeforeFill = true;
                 order_DetailsTableAdapter.FillByOrderID(comptoirSimplifieDataSet.Order_Details, row.OrderID);
 
-                ordersComboBox.Enabled = (comptoirSimplifieDataSet.Order_Details.Rows.Count > 0);
+                //ordersComboBox.Enabled = (comptoirSimplifieDataSet.Order_Details.Rows.Count > 0);
             }
         }
-
-        //private void CustomersBindingSource_CurrentChanged(object sender, EventArgs e)
-        //{
-        //    BindingSource snd = sender as BindingSource;
-        //    DataRowView dtrv = snd.Current as DataRowView;
-        //    if (dtrv != null)
-        //    {
-        //        ComptoirSimplifieDataSet.CustomersRow row = dtrv.Row as ComptoirSimplifieDataSet.CustomersRow;
-        //        if (row.CustomerID != null)
-        //        {
-        //            ordersTableAdapter.ClearBeforeFill = true;
-        //            ordersTableAdapter.FillByCustomerID(comptoirSimplifieDataSet.Orders, row.CustomerID);
-        //        }
-
-        //    }
-        //}
 
         private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -61,14 +45,6 @@ namespace A3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Order_Details'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            //this.order_DetailsTableAdapter.Fill(this.comptoirSimplifieDataSet.Order_Details);
-            // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Orders'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            //this.ordersTableAdapter.Fill(this.comptoirSimplifieDataSet.Orders);
-            // TODO: cette ligne de code charge les données dans la table 'comptoirSimplifieDataSet.Customers'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            paysTableAdapter.Fill(comptoirSimplifieDataSet.Pays);
-            //this.customersTableAdapter.Fill(this.comptoirSimplifieDataSet.Customers);
-
         }
 
         private void customersComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,18 +55,20 @@ namespace A3
         private void btnRechercher_Click(object sender, EventArgs e)
         {
             frmFindCustomer findCustomer = new frmFindCustomer();
+
             findCustomer.IDFound += FindCustomer_IDFound;
             findCustomer.Show();
         }
 
         private void FindCustomer_IDFound(string id)
         {
+            customersTableAdapter.ClearBeforeFill = true;
             ordersTableAdapter.ClearBeforeFill = true;
-
-            //comptoirSimplifieDataSet.Orders = ordersTableAdapter.GetDataByCustomerID(id);
+            order_DetailsTableAdapter.ClearBeforeFill = true;
 
             try
             {
+                customersTableAdapter.FillByID(comptoirSimplifieDataSet.Customers, id);
                 ordersTableAdapter.FillByCustomerID(comptoirSimplifieDataSet.Orders, id);
             }
             catch
@@ -98,10 +76,16 @@ namespace A3
                 foreach (DataRow currentError in comptoirSimplifieDataSet.Orders.GetErrors())
                 {
                     System.Diagnostics.Debug.WriteLine(currentError.RowError);
+                    System.Diagnostics.Debug.WriteLine(currentError.ItemArray);
                 }
             }
 
-            ordersComboBox.Enabled = (comptoirSimplifieDataSet.Orders.Rows.Count > 0);
+            //ordersComboBox.Enabled = (comptoirSimplifieDataSet.Orders.Rows.Count > 0);
+        }
+
+        private void frmOrders_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

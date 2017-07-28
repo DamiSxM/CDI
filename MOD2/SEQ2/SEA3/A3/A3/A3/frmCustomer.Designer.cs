@@ -46,6 +46,7 @@
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customersTableAdapter = new A3.ComptoirSimplifieDataSetTableAdapters.CustomersTableAdapter();
             this.tableAdapterManager = new A3.ComptoirSimplifieDataSetTableAdapters.TableAdapterManager();
+            this.paysTableAdapter = new A3.ComptoirSimplifieDataSetTableAdapters.PaysTableAdapter();
             this.customerIDTextBox = new System.Windows.Forms.TextBox();
             this.companyNameTextBox = new System.Windows.Forms.TextBox();
             this.contactNameTextBox = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.paysBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paysTableAdapter = new A3.ComptoirSimplifieDataSetTableAdapters.PaysTableAdapter();
             this.paysComboBox = new System.Windows.Forms.ComboBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
@@ -84,6 +84,123 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paysBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // customerIDLabel
+            // 
+            customerIDLabel.AutoSize = true;
+            customerIDLabel.Location = new System.Drawing.Point(13, 44);
+            customerIDLabel.Name = "customerIDLabel";
+            customerIDLabel.Size = new System.Drawing.Size(68, 13);
+            customerIDLabel.TabIndex = 1;
+            customerIDLabel.Text = "Customer ID:";
+            // 
+            // companyNameLabel
+            // 
+            companyNameLabel.AutoSize = true;
+            companyNameLabel.Location = new System.Drawing.Point(13, 70);
+            companyNameLabel.Name = "companyNameLabel";
+            companyNameLabel.Size = new System.Drawing.Size(85, 13);
+            companyNameLabel.TabIndex = 3;
+            companyNameLabel.Text = "Company Name:";
+            // 
+            // contactNameLabel
+            // 
+            contactNameLabel.AutoSize = true;
+            contactNameLabel.Location = new System.Drawing.Point(13, 96);
+            contactNameLabel.Name = "contactNameLabel";
+            contactNameLabel.Size = new System.Drawing.Size(78, 13);
+            contactNameLabel.TabIndex = 5;
+            contactNameLabel.Text = "Contact Name:";
+            // 
+            // contactTitleLabel
+            // 
+            contactTitleLabel.AutoSize = true;
+            contactTitleLabel.Location = new System.Drawing.Point(13, 122);
+            contactTitleLabel.Name = "contactTitleLabel";
+            contactTitleLabel.Size = new System.Drawing.Size(70, 13);
+            contactTitleLabel.TabIndex = 7;
+            contactTitleLabel.Text = "Contact Title:";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new System.Drawing.Point(13, 148);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(35, 13);
+            emailLabel.TabIndex = 9;
+            emailLabel.Text = "Email:";
+            // 
+            // creditCardLabel
+            // 
+            creditCardLabel.AutoSize = true;
+            creditCardLabel.Location = new System.Drawing.Point(13, 174);
+            creditCardLabel.Name = "creditCardLabel";
+            creditCardLabel.Size = new System.Drawing.Size(62, 13);
+            creditCardLabel.TabIndex = 11;
+            creditCardLabel.Text = "Credit Card:";
+            // 
+            // addressLabel
+            // 
+            addressLabel.AutoSize = true;
+            addressLabel.Location = new System.Drawing.Point(13, 200);
+            addressLabel.Name = "addressLabel";
+            addressLabel.Size = new System.Drawing.Size(48, 13);
+            addressLabel.TabIndex = 13;
+            addressLabel.Text = "Address:";
+            // 
+            // cityLabel
+            // 
+            cityLabel.AutoSize = true;
+            cityLabel.Location = new System.Drawing.Point(13, 226);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new System.Drawing.Size(27, 13);
+            cityLabel.TabIndex = 15;
+            cityLabel.Text = "City:";
+            // 
+            // regionLabel
+            // 
+            regionLabel.AutoSize = true;
+            regionLabel.Location = new System.Drawing.Point(13, 252);
+            regionLabel.Name = "regionLabel";
+            regionLabel.Size = new System.Drawing.Size(44, 13);
+            regionLabel.TabIndex = 17;
+            regionLabel.Text = "Region:";
+            // 
+            // postalCodeLabel
+            // 
+            postalCodeLabel.AutoSize = true;
+            postalCodeLabel.Location = new System.Drawing.Point(13, 278);
+            postalCodeLabel.Name = "postalCodeLabel";
+            postalCodeLabel.Size = new System.Drawing.Size(67, 13);
+            postalCodeLabel.TabIndex = 19;
+            postalCodeLabel.Text = "Postal Code:";
+            // 
+            // idPaysLabel
+            // 
+            idPaysLabel.AutoSize = true;
+            idPaysLabel.Location = new System.Drawing.Point(13, 304);
+            idPaysLabel.Name = "idPaysLabel";
+            idPaysLabel.Size = new System.Drawing.Size(44, 13);
+            idPaysLabel.TabIndex = 21;
+            idPaysLabel.Text = "id Pays:";
+            // 
+            // phoneLabel
+            // 
+            phoneLabel.AutoSize = true;
+            phoneLabel.Location = new System.Drawing.Point(13, 330);
+            phoneLabel.Name = "phoneLabel";
+            phoneLabel.Size = new System.Drawing.Size(41, 13);
+            phoneLabel.TabIndex = 23;
+            phoneLabel.Text = "Phone:";
+            // 
+            // faxLabel
+            // 
+            faxLabel.AutoSize = true;
+            faxLabel.Location = new System.Drawing.Point(13, 356);
+            faxLabel.Name = "faxLabel";
+            faxLabel.Size = new System.Drawing.Size(27, 13);
+            faxLabel.TabIndex = 25;
+            faxLabel.Text = "Fax:";
             // 
             // comptoirSimplifieDataSet
             // 
@@ -110,14 +227,9 @@
             this.tableAdapterManager.ProductsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = A3.ComptoirSimplifieDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // customerIDLabel
+            // paysTableAdapter
             // 
-            customerIDLabel.AutoSize = true;
-            customerIDLabel.Location = new System.Drawing.Point(13, 44);
-            customerIDLabel.Name = "customerIDLabel";
-            customerIDLabel.Size = new System.Drawing.Size(68, 13);
-            customerIDLabel.TabIndex = 1;
-            customerIDLabel.Text = "Customer ID:";
+            this.paysTableAdapter.ClearBeforeFill = true;
             // 
             // customerIDTextBox
             // 
@@ -127,15 +239,6 @@
             this.customerIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.customerIDTextBox.TabIndex = 2;
             // 
-            // companyNameLabel
-            // 
-            companyNameLabel.AutoSize = true;
-            companyNameLabel.Location = new System.Drawing.Point(13, 70);
-            companyNameLabel.Name = "companyNameLabel";
-            companyNameLabel.Size = new System.Drawing.Size(85, 13);
-            companyNameLabel.TabIndex = 3;
-            companyNameLabel.Text = "Company Name:";
-            // 
             // companyNameTextBox
             // 
             this.companyNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "CompanyName", true));
@@ -143,15 +246,6 @@
             this.companyNameTextBox.Name = "companyNameTextBox";
             this.companyNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.companyNameTextBox.TabIndex = 4;
-            // 
-            // contactNameLabel
-            // 
-            contactNameLabel.AutoSize = true;
-            contactNameLabel.Location = new System.Drawing.Point(13, 96);
-            contactNameLabel.Name = "contactNameLabel";
-            contactNameLabel.Size = new System.Drawing.Size(78, 13);
-            contactNameLabel.TabIndex = 5;
-            contactNameLabel.Text = "Contact Name:";
             // 
             // contactNameTextBox
             // 
@@ -161,15 +255,6 @@
             this.contactNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.contactNameTextBox.TabIndex = 6;
             // 
-            // contactTitleLabel
-            // 
-            contactTitleLabel.AutoSize = true;
-            contactTitleLabel.Location = new System.Drawing.Point(13, 122);
-            contactTitleLabel.Name = "contactTitleLabel";
-            contactTitleLabel.Size = new System.Drawing.Size(70, 13);
-            contactTitleLabel.TabIndex = 7;
-            contactTitleLabel.Text = "Contact Title:";
-            // 
             // contactTitleTextBox
             // 
             this.contactTitleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "ContactTitle", true));
@@ -177,15 +262,6 @@
             this.contactTitleTextBox.Name = "contactTitleTextBox";
             this.contactTitleTextBox.Size = new System.Drawing.Size(100, 20);
             this.contactTitleTextBox.TabIndex = 8;
-            // 
-            // emailLabel
-            // 
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(13, 148);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(35, 13);
-            emailLabel.TabIndex = 9;
-            emailLabel.Text = "Email:";
             // 
             // emailTextBox
             // 
@@ -195,15 +271,6 @@
             this.emailTextBox.Size = new System.Drawing.Size(100, 20);
             this.emailTextBox.TabIndex = 10;
             // 
-            // creditCardLabel
-            // 
-            creditCardLabel.AutoSize = true;
-            creditCardLabel.Location = new System.Drawing.Point(13, 174);
-            creditCardLabel.Name = "creditCardLabel";
-            creditCardLabel.Size = new System.Drawing.Size(62, 13);
-            creditCardLabel.TabIndex = 11;
-            creditCardLabel.Text = "Credit Card:";
-            // 
             // creditCardTextBox
             // 
             this.creditCardTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "CreditCard", true));
@@ -211,15 +278,6 @@
             this.creditCardTextBox.Name = "creditCardTextBox";
             this.creditCardTextBox.Size = new System.Drawing.Size(100, 20);
             this.creditCardTextBox.TabIndex = 12;
-            // 
-            // addressLabel
-            // 
-            addressLabel.AutoSize = true;
-            addressLabel.Location = new System.Drawing.Point(13, 200);
-            addressLabel.Name = "addressLabel";
-            addressLabel.Size = new System.Drawing.Size(48, 13);
-            addressLabel.TabIndex = 13;
-            addressLabel.Text = "Address:";
             // 
             // addressTextBox
             // 
@@ -229,15 +287,6 @@
             this.addressTextBox.Size = new System.Drawing.Size(100, 20);
             this.addressTextBox.TabIndex = 14;
             // 
-            // cityLabel
-            // 
-            cityLabel.AutoSize = true;
-            cityLabel.Location = new System.Drawing.Point(13, 226);
-            cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(27, 13);
-            cityLabel.TabIndex = 15;
-            cityLabel.Text = "City:";
-            // 
             // cityTextBox
             // 
             this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "City", true));
@@ -245,15 +294,6 @@
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(100, 20);
             this.cityTextBox.TabIndex = 16;
-            // 
-            // regionLabel
-            // 
-            regionLabel.AutoSize = true;
-            regionLabel.Location = new System.Drawing.Point(13, 252);
-            regionLabel.Name = "regionLabel";
-            regionLabel.Size = new System.Drawing.Size(44, 13);
-            regionLabel.TabIndex = 17;
-            regionLabel.Text = "Region:";
             // 
             // regionTextBox
             // 
@@ -263,15 +303,6 @@
             this.regionTextBox.Size = new System.Drawing.Size(100, 20);
             this.regionTextBox.TabIndex = 18;
             // 
-            // postalCodeLabel
-            // 
-            postalCodeLabel.AutoSize = true;
-            postalCodeLabel.Location = new System.Drawing.Point(13, 278);
-            postalCodeLabel.Name = "postalCodeLabel";
-            postalCodeLabel.Size = new System.Drawing.Size(67, 13);
-            postalCodeLabel.TabIndex = 19;
-            postalCodeLabel.Text = "Postal Code:";
-            // 
             // postalCodeTextBox
             // 
             this.postalCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "PostalCode", true));
@@ -280,24 +311,6 @@
             this.postalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.postalCodeTextBox.TabIndex = 20;
             // 
-            // idPaysLabel
-            // 
-            idPaysLabel.AutoSize = true;
-            idPaysLabel.Location = new System.Drawing.Point(13, 304);
-            idPaysLabel.Name = "idPaysLabel";
-            idPaysLabel.Size = new System.Drawing.Size(44, 13);
-            idPaysLabel.TabIndex = 21;
-            idPaysLabel.Text = "id Pays:";
-            // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(13, 330);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(41, 13);
-            phoneLabel.TabIndex = 23;
-            phoneLabel.Text = "Phone:";
-            // 
             // phoneTextBox
             // 
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "Phone", true));
@@ -305,15 +318,6 @@
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.phoneTextBox.TabIndex = 24;
-            // 
-            // faxLabel
-            // 
-            faxLabel.AutoSize = true;
-            faxLabel.Location = new System.Drawing.Point(13, 356);
-            faxLabel.Name = "faxLabel";
-            faxLabel.Size = new System.Drawing.Size(27, 13);
-            faxLabel.TabIndex = 25;
-            faxLabel.Text = "Fax:";
             // 
             // faxTextBox
             // 
@@ -351,6 +355,7 @@
             this.btnModifier.TabIndex = 29;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // btnSupprimer
             // 
@@ -360,15 +365,12 @@
             this.btnSupprimer.TabIndex = 30;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // paysBindingSource
             // 
             this.paysBindingSource.DataMember = "Pays";
             this.paysBindingSource.DataSource = this.comptoirSimplifieDataSet;
-            // 
-            // paysTableAdapter
-            // 
-            this.paysTableAdapter.ClearBeforeFill = true;
             // 
             // paysComboBox
             // 
@@ -438,8 +440,12 @@
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(faxLabel);
             this.Controls.Add(this.faxTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCustomer";
             this.Text = "frmCustomer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCustomer_FormClosing);
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.comptoirSimplifieDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();

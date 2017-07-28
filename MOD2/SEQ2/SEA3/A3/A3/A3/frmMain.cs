@@ -40,5 +40,10 @@ namespace A3
             }
             else Commandes.Activate();
         }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
+        }
     }
 }

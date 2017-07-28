@@ -38,9 +38,9 @@ namespace A3 {
         
         private global::System.Data.DataRelation relationFK_Customers_Pays;
         
-        private global::System.Data.DataRelation relationFK_Order_Details_Orders;
-        
         private global::System.Data.DataRelation relationFK_Order_Details_Products;
+        
+        private global::System.Data.DataRelation relationFK_Order_Details_Orders;
         
         private global::System.Data.DataRelation relationFK_Orders_Customers;
         
@@ -325,8 +325,8 @@ namespace A3 {
                 }
             }
             this.relationFK_Customers_Pays = this.Relations["FK_Customers_Pays"];
-            this.relationFK_Order_Details_Orders = this.Relations["FK_Order_Details_Orders"];
             this.relationFK_Order_Details_Products = this.Relations["FK_Order_Details_Products"];
+            this.relationFK_Order_Details_Orders = this.Relations["FK_Order_Details_Orders"];
             this.relationFK_Orders_Customers = this.Relations["FK_Orders_Customers"];
             this.relationFK_Products_Categories = this.Relations["FK_Products_Categories"];
         }
@@ -359,16 +359,16 @@ namespace A3 {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Order_Details_Orders", new global::System.Data.DataColumn[] {
-                        this.tableOrders.OrderIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableOrder_Details.OrderIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Order_Details_Products", new global::System.Data.DataColumn[] {
+                        this.tableProducts.ProductIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrder_Details.ProductIDColumn});
             this.tableOrder_Details.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Order_Details_Products", new global::System.Data.DataColumn[] {
-                        this.tableProducts.ProductIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableOrder_Details.ProductIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Order_Details_Orders", new global::System.Data.DataColumn[] {
+                        this.tableOrders.OrderIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrder_Details.OrderIDColumn});
             this.tableOrder_Details.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -391,14 +391,14 @@ namespace A3 {
                         this.tablePays.IdPays2Column}, new global::System.Data.DataColumn[] {
                         this.tableCustomers.idPaysColumn}, false);
             this.Relations.Add(this.relationFK_Customers_Pays);
-            this.relationFK_Order_Details_Orders = new global::System.Data.DataRelation("FK_Order_Details_Orders", new global::System.Data.DataColumn[] {
-                        this.tableOrders.OrderIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableOrder_Details.OrderIDColumn}, false);
-            this.Relations.Add(this.relationFK_Order_Details_Orders);
             this.relationFK_Order_Details_Products = new global::System.Data.DataRelation("FK_Order_Details_Products", new global::System.Data.DataColumn[] {
                         this.tableProducts.ProductIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableOrder_Details.ProductIDColumn}, false);
             this.Relations.Add(this.relationFK_Order_Details_Products);
+            this.relationFK_Order_Details_Orders = new global::System.Data.DataRelation("FK_Order_Details_Orders", new global::System.Data.DataColumn[] {
+                        this.tableOrders.OrderIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrder_Details.OrderIDColumn}, false);
+            this.Relations.Add(this.relationFK_Order_Details_Orders);
             this.relationFK_Orders_Customers = new global::System.Data.DataRelation("FK_Orders_Customers", new global::System.Data.DataColumn[] {
                         this.tableCustomers.CustomerIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableOrders.CustomerIDColumn}, false);
@@ -3198,23 +3198,23 @@ namespace A3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OrdersRow OrdersRow {
-                get {
-                    return ((OrdersRow)(this.GetParentRow(this.Table.ParentRelations["FK_Order_Details_Orders"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Order_Details_Orders"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProductsRow ProductsRow {
                 get {
                     return ((ProductsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Order_Details_Products"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Order_Details_Products"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OrdersRow OrdersRow {
+                get {
+                    return ((OrdersRow)(this.GetParentRow(this.Table.ParentRelations["FK_Order_Details_Orders"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Order_Details_Orders"]);
                 }
             }
             
@@ -4352,7 +4352,7 @@ WHERE        (CustomerID LIKE UPPER(@CustomerID) + '%') AND (CompanyName LIKE @C
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT        CustomerID, CompanyName, ContactName, ContactTitle, Email, CreditCa" +
                 "rd, Address, City, Region, PostalCode, idPays, Phone, Fax, TS\r\nFROM            C" +
-                "ustomers\r\nWHERE        (CustomerID LIKE UPPER(@CustomerID) + \'%\')";
+                "ustomers\r\nWHERE        (CustomerID LIKE RTRIM(UPPER(@CustomerID)) + \'%\')";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Char, 5, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
